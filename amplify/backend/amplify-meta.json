@@ -1,0 +1,65 @@
+{
+    "providers": {
+        "awscloudformation": {
+            "AuthRoleName": "foodapp-dev-20191010175537-authRole",
+            "UnauthRoleArn": "arn:aws:iam::604989156334:role/foodapp-dev-20191010175537-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::604989156334:role/foodapp-dev-20191010175537-authRole",
+            "Region": "ap-southeast-2",
+            "DeploymentBucketName": "foodapp-dev-20191010175537-deployment",
+            "UnauthRoleName": "foodapp-dev-20191010175537-unauthRole",
+            "StackName": "foodapp-dev-20191010175537",
+            "StackId": "arn:aws:cloudformation:ap-southeast-2:604989156334:stack/foodapp-dev-20191010175537/f7147e60-eb2a-11e9-8337-026f52927b4e"
+        },
+        "categories": {
+            "auth": {
+                "foodappdd5b79e5": {}
+            }
+        }
+    },
+    "auth": {
+        "foodappdd5b79e5": {
+            "service": "Cognito",
+            "providerPlugin": "awscloudformation",
+            "dependsOn": [],
+            "output": {
+                "AppClientSecret": "1lue5h9qoucj208gs6gi9gm999k1tdga6bcrcgqp72c2iogaj9lp",
+                "UserPoolId": "ap-southeast-2_xpzK6jJBL",
+                "AppClientIDWeb": "4t6lem37tkgfhqt57gc3i1b3mv",
+                "AppClientID": "7t3au9mmibbdc2atjdp5uag5r0",
+                "IdentityPoolId": "ap-southeast-2:810636ef-6bd1-401b-b1e2-9913b8327033",
+                "IdentityPoolName": "foodappdd5b79e5_identitypool_dd5b79e5__dev",
+                "UserPoolName": "foodappdd5b79e5_userpool_dd5b79e5"
+            },
+            "lastPushTimeStamp": "2019-11-23T11:01:29.818Z",
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/foodapp-dev-20191010175537-deployment/amplify-cfn-templates/auth/foodappdd5b79e5-cloudformation-template.yml",
+                "logicalId": "authfoodappdd5b79e5"
+            }
+        }
+    },
+    "api": {
+        "foodapp": {
+            "service": "AppSync",
+            "providerPlugin": "awscloudformation",
+            "output": {
+                "authConfig": {
+                    "additionalAuthenticationProviders": [],
+                    "defaultAuthentication": {
+                        "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+                        "userPoolConfig": {
+                            "userPoolId": "authfoodappdd5b79e5"
+                        }
+                    }
+                },
+                "GraphQLAPIIdOutput": "24xqrcgneng5jn663wibfzf7ve",
+                "GraphQLAPIEndpointOutput": "https://gwtjkmrgejd63awaju7y5plrre.appsync-api.ap-southeast-2.amazonaws.com/graphql"
+            },
+            "lastPushTimeStamp": "2019-11-23T11:01:29.825Z",
+            "providerMetadata": {
+                "s3TemplateURL": "https://s3.amazonaws.com/foodapp-dev-20191010175537-deployment/amplify-cfn-templates/api/cloudformation-template.json",
+                "logicalId": "apifoodapp"
+            },
+            "lastPushDirHash": "GU8kVrofRAF4h6FslG/pFVitA48="
+        }
+    }
+}

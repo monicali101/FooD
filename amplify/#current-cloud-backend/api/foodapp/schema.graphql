@@ -1,0 +1,228 @@
+type user @model @auth(rules: [{ allow: owner }]) {
+  id: ID!
+  username: String ## since owner is protected
+  favourites: [String]
+  favouriteSearch: [String]
+  favouriteShared: [String]
+  preferences: [String]
+  email: String
+  firstName: String
+  lastName: String
+  recommendDishes: [recommendDish]
+  profilePic: String
+  myFriendEmails: [String]
+  myFriendUsernames: [String]
+  myFriendId: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+type recommendDish {
+  id: ID
+  dishName: String
+}
+
+type userClick
+  @model
+  @auth(rules: [{ allow: owner }]) { ### storing food clicks
+  id: ID!
+  # userId: ID    add by Rita in backend
+  dishId: ID
+  dishName: String
+  cusineID: ID
+  cuisineName: String
+  keywords: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+type userClickCuisine
+  @model
+  @auth(rules: [{ allow: owner }]) { ### storing cuisine clicks
+  id: ID!
+  # userId: ID    add by Rita in backend
+  cusineID: ID
+  cuisineName: String
+  keywords: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+type rankMap  #### FOR BACKEND USE
+  @model
+  @auth(rules: [{ allow: owner }])
+  @key(fields: ["id", "count"]) {
+  id: ID! ## primary key
+  keyword: [String]
+  count: Int! ## sort key
+  userId: ID
+  createdAt: String
+  updatedAt: String
+}
+
+type sharing
+  @model
+  @auth(rules: [{ allow: owner }])
+  @key(fields: ["myId", "friendEmail"]) {
+  myId: ID!
+  myEmail: String
+  myUserName: String
+  friendEmail: ID!
+  friendUsername: String
+  favourites: [String]
+  message: message
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+type shareHistory @model @auth(rules: [{ allow: owner }]) {
+  # @key(fields: ["senderId", "receiverEmail"]) {
+  # @key(fields: ["receiverEmail"]) {
+  id: ID!
+  #myId: ID!
+  senderId: ID!
+  # myEmail: String
+  senderEmail: String
+  # myUserName: String
+  senderUsername: String
+  # friendEmail: ID!
+  receiverEmail: String!
+  # friendUsername: String
+  receiverUsername: String
+  favourites: [String]
+  message: message
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+type message {
+  title: String
+  body: String
+}
+
+# type rankMap2  #### FOR BACKEND USE
+#   @model
+#   @auth(rules: [{ allow: owner }])
+#   @key(fields: ["userId", "keyword"]) {
+#   userId: ID! ## primary key
+#   keyword: [String]
+#   count: Int! ## sort key
+#   owner: String
+#   createdAt: String
+#   updatedAt: String
+# }
+
+type Query {
+  checkFriendUsername(friendUsername: String!): ModelFriendConnection
+  checkFriendEmail(friendEmail: String!): ModelFriendConnection
+  listReceivedSharedRecords(
+    filter: ModelshareHistoryFilterInput
+    limit: Int
+    nextToken: String
+  ): ModelshareHistoryConnection
+}
+
+type Mutation {
+  updateReceivedShareRecord(input: UpdateShareHistoryInput!): shareHistory
+}
+
+type ModelFriendConnection {
+  items: [friend]
+}
+
+type friend {
+  id: ID
+  username: String
+  email: String
+  firstName: String
+  lastName: String
+  profilePic: String
+}
+
+input ModelshareHistoryFilterInput {
+  id: ModelIDFilterInput
+  senderId: ModelIDFilterInput
+  senderEmail: ModelStringFilterInput
+  senderUsername: ModelStringFilterInput
+  receiverEmail: ModelStringFilterInput
+  receiverUsername: ModelStringFilterInput
+  favourites: ModelStringFilterInput
+  unread: ModelBooleanFilterInput
+  createdAt: ModelStringFilterInput
+  updatedAt: ModelStringFilterInput
+  and: [ModelshareHistoryFilterInput]
+  or: [ModelshareHistoryFilterInput]
+  not: ModelshareHistoryFilterInput
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+type ModelshareHistoryConnection {
+  items: [shareHistory]
+  nextToken: String
+}
+
+type shareHistory {
+  id: ID!
+  senderId: ID!
+  senderEmail: String
+  senderUsername: String
+  receiverEmail: String!
+  receiverUsername: String
+  favourites: [String]
+  message: message
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+  owner: String
+}
+
+input UpdateShareHistoryInput {
+  id: ID!
+  senderId: ID
+  senderEmail: String
+  senderUsername: String
+  receiverEmail: String
+  receiverUsername: String
+  favourites: [String]
+  message: MessageInput
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+input MessageInput {
+  title: String
+  body: String
+}

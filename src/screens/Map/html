@@ -1,0 +1,9 @@
+https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=UNSW&inputtype=textquery&fields=photos,formatted_address,name,rating,opening_hours,geometry&key=AIzaSyCNGvlimsdIoO2Jg1k0NeCPrSTpHhfoFT0
+
+https://maps.googleapis.com/maps/api/directions/json?origin=UNSW&destination=USYD=AIzaSyCNGvlimsdIoO2Jg1k0NeCPrSTpHhfoFT0
+
+https://maps.googleapis.com/maps/api/directions/json?origin=-33.917347,151.2312675&destination=University+of+sydney&language=en-AU&key=AIzaSyCNGvlimsdIoO2Jg1k0NeCPrSTpHhfoFT0
+
+https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.9379,151.24&type=restaurant&keyword=chinese&language=en-AU&rankby=distance&key=AIzaSyCNGvlimsdIoO2Jg1k0NeCPrSTpHhfoFT0
+
+https://maps.googleapis.com/maps/api/place/photo?maxwidth=400&photoreference=CmRaAAAAzJnhOTxKZW5QnRfpcP5-_QavVaAxFdCigXr-kGy7ND6OZPg5M8HzcukO-DqQmP482CJ9BXO1UyCTpEHzuIurQUlOigf_Wq2lAoCDxYjAUKFZyQgFalRhBqOjNlAeFoAnEhCFFotfoNay27kpsgZas1lnGhQikJwMqX1I09H-okC_WLSgCB-_mw&key=AIzaSyCNGvlimsdIoO2Jg1k0NeCPrSTpHhfoFT0

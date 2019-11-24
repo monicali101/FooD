@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "foodapp",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authfoodappdd5b79e5",
+            "Outputs.UserPoolId"
+        ]
+    }
+}
