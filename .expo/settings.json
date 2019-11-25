@@ -1,8 +1,8 @@
 {
-  "hostType": "localhost",
+  "hostType": "lan",
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "sx-cv4",
+  "urlRandomness": "5w-i6y",
   "https": false
 }
