@@ -9,6 +9,7 @@ type user @model @auth(rules: [{ allow: owner }]) {
   firstName: String
   lastName: String
   recommendDishes: [recommendDish]
+  recommendDishesNew: [String]
   profilePic: String
   myFriendEmails: [String]
   myFriendUsernames: [String]

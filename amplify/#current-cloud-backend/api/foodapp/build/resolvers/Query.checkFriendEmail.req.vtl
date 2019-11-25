@@ -1,0 +1,27 @@
+## {
+## "version": "2017-02-28",
+##   "operation": "Scan",
+##   "filter": {
+##     "expression": "#email = :email",
+##     "expressionValues": {
+##       ":email":  $util.dynamodb.toDynamoDBJson($ctx.args.friendEmail) 
+##     },
+##     "expressionNames": {
+##       "#email": "email"
+##     }
+##   }
+## } 
+
+{
+    "version" : "2017-02-28",
+    "operation" : "Query",
+    "index" : "email-index",
+    "query" : {
+        ## Provide a query expression. **
+        "expression": "email = :email",
+        "expressionValues" : {
+            ":email" : $util.dynamodb.toDynamoDBJson($ctx.args.friendEmail)
+        }
+    }
+}
+

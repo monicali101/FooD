@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
   "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 26692,
-  "expoServerNgrokUrl": "https://ah-6kr.cartercheng1996.foo-d.exp.direct",
-  "packagerNgrokUrl": "https://packager.ah-6kr.cartercheng1996.foo-d.exp.direct",
-  "ngrokPid": 25756
+  "packagerPort": 19005,
+  "packagerPid": 76980,
+  "expoServerNgrokUrl": "https://ah-6kr.anonymous.foo-d--new.exp.direct",
+  "packagerNgrokUrl": "https://packager.ah-6kr.anonymous.foo-d--new.exp.direct",
+  "ngrokPid": 76998
 }

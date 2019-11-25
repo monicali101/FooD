@@ -275,7 +275,8 @@ export default class RecommendationScreen extends Component {
               myFriendEmails: ["<empty>"],
               myFriendUsernames: ["<empty>"],
               myFriendId: ["<empty>"],
-              recommendDishes: ["empty"]
+              recommendDishesNew: ["empty"],
+              recommendDishes: { id: "<empty>", dishName: "<empty>" }
             };
 
             var newUser = API.graphql(

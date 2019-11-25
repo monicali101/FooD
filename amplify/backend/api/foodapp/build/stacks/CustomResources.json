@@ -1,0 +1,209 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "An auto-generated nested stack.",
+    "Metadata": {},
+    "Parameters": {
+        "AppSyncApiId": {
+            "Type": "String",
+            "Description": "The id of the AppSync API associated with this project."
+        },
+        "AppSyncApiName": {
+            "Type": "String",
+            "Description": "The name of the AppSync API",
+            "Default": "AppSyncSimpleTransform"
+        },
+        "env": {
+            "Type": "String",
+            "Description": "The environment name. e.g. Dev, Test, or Production",
+            "Default": "NONE"
+        },
+        "S3DeploymentBucket": {
+            "Type": "String",
+            "Description": "The S3 bucket containing all deployment assets for the project."
+        },
+        "S3DeploymentRootKey": {
+            "Type": "String",
+            "Description": "An S3 key relative to the S3DeploymentBucket that points to the root\nof the deployment directory."
+        }
+    },
+    "Resources": {
+        "EmptyResource": {
+            "Type": "Custom::EmptyResource",
+            "Condition": "AlwaysFalse"
+        },
+        "QueryCheckFriendEmail": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Ref": "AppSyncApiId"
+                },
+                "DataSourceName": "userTable",
+                "TypeName": "Query",
+                "FieldName": "checkFriendEmail",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Sub": [
+                        "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.checkFriendEmail.req.vtl",
+                        {
+                            "S3DeploymentBucket": {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "S3DeploymentRootKey": {
+                                "Ref": "S3DeploymentRootKey"
+                            }
+                        }
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Sub": [
+                        "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.checkFriendEmail.res.vtl",
+                        {
+                            "S3DeploymentBucket": {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "S3DeploymentRootKey": {
+                                "Ref": "S3DeploymentRootKey"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "QueryCheckFriendUsername": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Ref": "AppSyncApiId"
+                },
+                "DataSourceName": "userTable",
+                "TypeName": "Query",
+                "FieldName": "checkFriendUsername",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Sub": [
+                        "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.checkFriendUsername.req.vtl",
+                        {
+                            "S3DeploymentBucket": {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "S3DeploymentRootKey": {
+                                "Ref": "S3DeploymentRootKey"
+                            }
+                        }
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Sub": [
+                        "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.checkFriendUsername.res.vtl",
+                        {
+                            "S3DeploymentBucket": {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "S3DeploymentRootKey": {
+                                "Ref": "S3DeploymentRootKey"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "QueryListReceivedSharedRecords": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Ref": "AppSyncApiId"
+                },
+                "DataSourceName": "shareHistoryTable",
+                "TypeName": "Query",
+                "FieldName": "listReceivedSharedRecords",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Sub": [
+                        "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.listReceivedSharedRecords.req.vtl",
+                        {
+                            "S3DeploymentBucket": {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "S3DeploymentRootKey": {
+                                "Ref": "S3DeploymentRootKey"
+                            }
+                        }
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Sub": [
+                        "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Query.listReceivedSharedRecords.res.vtl",
+                        {
+                            "S3DeploymentBucket": {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "S3DeploymentRootKey": {
+                                "Ref": "S3DeploymentRootKey"
+                            }
+                        }
+                    ]
+                }
+            }
+        },
+        "MutationUpdateReceivedShareRecord": {
+            "Type": "AWS::AppSync::Resolver",
+            "Properties": {
+                "ApiId": {
+                    "Ref": "AppSyncApiId"
+                },
+                "DataSourceName": "shareHistoryTable",
+                "TypeName": "Mutation",
+                "FieldName": "updateReceivedShareRecord",
+                "RequestMappingTemplateS3Location": {
+                    "Fn::Sub": [
+                        "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Mutation.updateReceivedShareRecord.req.vtl",
+                        {
+                            "S3DeploymentBucket": {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "S3DeploymentRootKey": {
+                                "Ref": "S3DeploymentRootKey"
+                            }
+                        }
+                    ]
+                },
+                "ResponseMappingTemplateS3Location": {
+                    "Fn::Sub": [
+                        "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/Mutation.updateReceivedShareRecord.res.vtl",
+                        {
+                            "S3DeploymentBucket": {
+                                "Ref": "S3DeploymentBucket"
+                            },
+                            "S3DeploymentRootKey": {
+                                "Ref": "S3DeploymentRootKey"
+                            }
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "Conditions": {
+        "HasEnvironmentParameter": {
+            "Fn::Not": [
+                {
+                    "Fn::Equals": [
+                        {
+                            "Ref": "env"
+                        },
+                        "NONE"
+                    ]
+                }
+            ]
+        },
+        "AlwaysFalse": {
+            "Fn::Equals": [
+                "true",
+                "false"
+            ]
+        }
+    },
+    "Outputs": {
+        "EmptyOutput": {
+            "Description": "An empty output. You may delete this if you have at least one resource above.",
+            "Value": ""
+        }
+    }
+}

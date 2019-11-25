@@ -36,6 +36,7 @@ export const createUser = `mutation CreateUser($input: CreateUserInput!) {
       id
       dishName
     }
+    recommendDishesNew
     profilePic
     myFriendEmails
     myFriendUsernames
@@ -61,6 +62,7 @@ export const updateUser = `mutation UpdateUser($input: UpdateUserInput!) {
       id
       dishName
     }
+    recommendDishesNew
     profilePic
     myFriendEmails
     myFriendUsernames
@@ -86,6 +88,7 @@ export const deleteUser = `mutation DeleteUser($input: DeleteUserInput!) {
       id
       dishName
     }
+    recommendDishesNew
     profilePic
     myFriendEmails
     myFriendUsernames

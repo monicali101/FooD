@@ -1,0 +1,14 @@
+{
+    "CreateAPIKey": 0,
+    "AppSyncApiName": "foodapp",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authfoodappdd5b79e5",
+            "Outputs.UserPoolId"
+        ]
+    },
+    "S3DeploymentBucket": "foodapp-dev-20191010175537-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/05f4c8a2060b6d239b2003558d9f861f528f8310"
+}

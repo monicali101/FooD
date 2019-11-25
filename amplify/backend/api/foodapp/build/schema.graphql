@@ -1,0 +1,553 @@
+type user {
+  id: ID!
+  username: String
+  favourites: [String]
+  favouriteSearch: [String]
+  favouriteShared: [String]
+  preferences: [String]
+  email: String
+  firstName: String
+  lastName: String
+  recommendDishes: [recommendDish]
+  recommendDishesNew: [String]
+  profilePic: String
+  myFriendEmails: [String]
+  myFriendUsernames: [String]
+  myFriendId: [String]
+  createdAt: String
+  updatedAt: String
+  owner: String
+}
+
+type recommendDish {
+  id: ID
+  dishName: String
+}
+
+type userClick {
+  id: ID!
+  dishId: ID
+  dishName: String
+  cusineID: ID
+  cuisineName: String
+  keywords: [String]
+  createdAt: String
+  updatedAt: String
+  owner: String
+}
+
+type userClickCuisine {
+  id: ID!
+  cusineID: ID
+  cuisineName: String
+  keywords: [String]
+  createdAt: String
+  updatedAt: String
+  owner: String
+}
+
+type rankMap {
+  id: ID!
+  keyword: [String]
+  count: Int!
+  userId: ID
+  createdAt: String
+  updatedAt: String
+  owner: String
+}
+
+type sharing {
+  myId: ID!
+  myEmail: String
+  myUserName: String
+  friendEmail: ID!
+  friendUsername: String
+  favourites: [String]
+  message: message
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+  owner: String
+}
+
+type shareHistory {
+  id: ID!
+  senderId: ID!
+  senderEmail: String
+  senderUsername: String
+  receiverEmail: String!
+  receiverUsername: String
+  favourites: [String]
+  message: message
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+  owner: String
+}
+
+type message {
+  title: String
+  body: String
+}
+
+type Query {
+  checkFriendUsername(friendUsername: String!): ModelFriendConnection
+  checkFriendEmail(friendEmail: String!): ModelFriendConnection
+  listReceivedSharedRecords(filter: ModelshareHistoryFilterInput, limit: Int, nextToken: String): ModelshareHistoryConnection
+  getUser(id: ID!): user
+  listUsers(filter: ModeluserFilterInput, limit: Int, nextToken: String): ModeluserConnection
+  getUserClick(id: ID!): userClick
+  listUserClicks(filter: ModeluserClickFilterInput, limit: Int, nextToken: String): ModeluserClickConnection
+  getUserClickCuisine(id: ID!): userClickCuisine
+  listUserClickCuisines(filter: ModeluserClickCuisineFilterInput, limit: Int, nextToken: String): ModeluserClickCuisineConnection
+  getRankMap(id: ID!, count: Int!): rankMap
+  listRankMaps(id: ID, count: ModelIntKeyConditionInput, filter: ModelrankMapFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelrankMapConnection
+  getSharing(myId: ID!, friendEmail: ID!): sharing
+  listSharings(myId: ID, friendEmail: ModelIDKeyConditionInput, filter: ModelsharingFilterInput, limit: Int, nextToken: String, sortDirection: ModelSortDirection): ModelsharingConnection
+  getShareHistory(id: ID!): shareHistory
+  listShareHistorys(filter: ModelshareHistoryFilterInput, limit: Int, nextToken: String): ModelshareHistoryConnection
+}
+
+type Mutation {
+  updateReceivedShareRecord(input: UpdateShareHistoryInput!): shareHistory
+  createUser(input: CreateUserInput!): user
+  updateUser(input: UpdateUserInput!): user
+  deleteUser(input: DeleteUserInput!): user
+  createUserClick(input: CreateUserClickInput!): userClick
+  updateUserClick(input: UpdateUserClickInput!): userClick
+  deleteUserClick(input: DeleteUserClickInput!): userClick
+  createUserClickCuisine(input: CreateUserClickCuisineInput!): userClickCuisine
+  updateUserClickCuisine(input: UpdateUserClickCuisineInput!): userClickCuisine
+  deleteUserClickCuisine(input: DeleteUserClickCuisineInput!): userClickCuisine
+  createRankMap(input: CreateRankMapInput!): rankMap
+  updateRankMap(input: UpdateRankMapInput!): rankMap
+  deleteRankMap(input: DeleteRankMapInput!): rankMap
+  createSharing(input: CreateSharingInput!): sharing
+  updateSharing(input: UpdateSharingInput!): sharing
+  deleteSharing(input: DeleteSharingInput!): sharing
+  createShareHistory(input: CreateShareHistoryInput!): shareHistory
+  updateShareHistory(input: UpdateShareHistoryInput!): shareHistory
+  deleteShareHistory(input: DeleteShareHistoryInput!): shareHistory
+}
+
+type ModelFriendConnection {
+  items: [friend]
+}
+
+type friend {
+  id: ID
+  username: String
+  email: String
+  firstName: String
+  lastName: String
+  profilePic: String
+}
+
+input ModelshareHistoryFilterInput {
+  id: ModelIDFilterInput
+  senderId: ModelIDFilterInput
+  senderEmail: ModelStringFilterInput
+  senderUsername: ModelStringFilterInput
+  receiverEmail: ModelStringFilterInput
+  receiverUsername: ModelStringFilterInput
+  favourites: ModelStringFilterInput
+  unread: ModelBooleanFilterInput
+  createdAt: ModelStringFilterInput
+  updatedAt: ModelStringFilterInput
+  and: [ModelshareHistoryFilterInput]
+  or: [ModelshareHistoryFilterInput]
+  not: ModelshareHistoryFilterInput
+}
+
+input ModelIDFilterInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+}
+
+input ModelStringFilterInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+}
+
+input ModelBooleanFilterInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+type ModelshareHistoryConnection {
+  items: [shareHistory]
+  nextToken: String
+}
+
+input UpdateShareHistoryInput {
+  id: ID!
+  senderId: ID
+  senderEmail: String
+  senderUsername: String
+  receiverEmail: String
+  receiverUsername: String
+  favourites: [String]
+  message: MessageInput
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+input MessageInput {
+  title: String
+  body: String
+}
+
+input RecommendDishInput {
+  id: ID
+  dishName: String
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModeluserConnection {
+  items: [user]
+  nextToken: String
+}
+
+input ModelIntFilterInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  contains: Int
+  notContains: Int
+  between: [Int]
+}
+
+input ModelFloatFilterInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  contains: Float
+  notContains: Float
+  between: [Float]
+}
+
+input ModeluserFilterInput {
+  id: ModelIDFilterInput
+  username: ModelStringFilterInput
+  favourites: ModelStringFilterInput
+  favouriteSearch: ModelStringFilterInput
+  favouriteShared: ModelStringFilterInput
+  preferences: ModelStringFilterInput
+  email: ModelStringFilterInput
+  firstName: ModelStringFilterInput
+  lastName: ModelStringFilterInput
+  recommendDishesNew: ModelStringFilterInput
+  profilePic: ModelStringFilterInput
+  myFriendEmails: ModelStringFilterInput
+  myFriendUsernames: ModelStringFilterInput
+  myFriendId: ModelStringFilterInput
+  createdAt: ModelStringFilterInput
+  updatedAt: ModelStringFilterInput
+  and: [ModeluserFilterInput]
+  or: [ModeluserFilterInput]
+  not: ModeluserFilterInput
+}
+
+input CreateUserInput {
+  id: ID
+  username: String
+  favourites: [String]
+  favouriteSearch: [String]
+  favouriteShared: [String]
+  preferences: [String]
+  email: String
+  firstName: String
+  lastName: String
+  recommendDishes: [RecommendDishInput]
+  recommendDishesNew: [String]
+  profilePic: String
+  myFriendEmails: [String]
+  myFriendUsernames: [String]
+  myFriendId: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+input UpdateUserInput {
+  id: ID!
+  username: String
+  favourites: [String]
+  favouriteSearch: [String]
+  favouriteShared: [String]
+  preferences: [String]
+  email: String
+  firstName: String
+  lastName: String
+  recommendDishes: [RecommendDishInput]
+  recommendDishesNew: [String]
+  profilePic: String
+  myFriendEmails: [String]
+  myFriendUsernames: [String]
+  myFriendId: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+input DeleteUserInput {
+  id: ID
+}
+
+type Subscription {
+  onCreateUser(owner: String!): user @aws_subscribe(mutations: ["createUser"])
+  onUpdateUser(owner: String!): user @aws_subscribe(mutations: ["updateUser"])
+  onDeleteUser(owner: String!): user @aws_subscribe(mutations: ["deleteUser"])
+  onCreateUserClick(owner: String!): userClick @aws_subscribe(mutations: ["createUserClick"])
+  onUpdateUserClick(owner: String!): userClick @aws_subscribe(mutations: ["updateUserClick"])
+  onDeleteUserClick(owner: String!): userClick @aws_subscribe(mutations: ["deleteUserClick"])
+  onCreateUserClickCuisine(owner: String!): userClickCuisine @aws_subscribe(mutations: ["createUserClickCuisine"])
+  onUpdateUserClickCuisine(owner: String!): userClickCuisine @aws_subscribe(mutations: ["updateUserClickCuisine"])
+  onDeleteUserClickCuisine(owner: String!): userClickCuisine @aws_subscribe(mutations: ["deleteUserClickCuisine"])
+  onCreateRankMap(owner: String!): rankMap @aws_subscribe(mutations: ["createRankMap"])
+  onUpdateRankMap(owner: String!): rankMap @aws_subscribe(mutations: ["updateRankMap"])
+  onDeleteRankMap(owner: String!): rankMap @aws_subscribe(mutations: ["deleteRankMap"])
+  onCreateSharing(owner: String!): sharing @aws_subscribe(mutations: ["createSharing"])
+  onUpdateSharing(owner: String!): sharing @aws_subscribe(mutations: ["updateSharing"])
+  onDeleteSharing(owner: String!): sharing @aws_subscribe(mutations: ["deleteSharing"])
+  onCreateShareHistory(owner: String!): shareHistory @aws_subscribe(mutations: ["createShareHistory"])
+  onUpdateShareHistory(owner: String!): shareHistory @aws_subscribe(mutations: ["updateShareHistory"])
+  onDeleteShareHistory(owner: String!): shareHistory @aws_subscribe(mutations: ["deleteShareHistory"])
+}
+
+type ModeluserClickConnection {
+  items: [userClick]
+  nextToken: String
+}
+
+input ModeluserClickFilterInput {
+  id: ModelIDFilterInput
+  dishId: ModelIDFilterInput
+  dishName: ModelStringFilterInput
+  cusineID: ModelIDFilterInput
+  cuisineName: ModelStringFilterInput
+  keywords: ModelStringFilterInput
+  createdAt: ModelStringFilterInput
+  updatedAt: ModelStringFilterInput
+  and: [ModeluserClickFilterInput]
+  or: [ModeluserClickFilterInput]
+  not: ModeluserClickFilterInput
+}
+
+input CreateUserClickInput {
+  id: ID
+  dishId: ID
+  dishName: String
+  cusineID: ID
+  cuisineName: String
+  keywords: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+input UpdateUserClickInput {
+  id: ID!
+  dishId: ID
+  dishName: String
+  cusineID: ID
+  cuisineName: String
+  keywords: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+input DeleteUserClickInput {
+  id: ID
+}
+
+type ModeluserClickCuisineConnection {
+  items: [userClickCuisine]
+  nextToken: String
+}
+
+input ModeluserClickCuisineFilterInput {
+  id: ModelIDFilterInput
+  cusineID: ModelIDFilterInput
+  cuisineName: ModelStringFilterInput
+  keywords: ModelStringFilterInput
+  createdAt: ModelStringFilterInput
+  updatedAt: ModelStringFilterInput
+  and: [ModeluserClickCuisineFilterInput]
+  or: [ModeluserClickCuisineFilterInput]
+  not: ModeluserClickCuisineFilterInput
+}
+
+input CreateUserClickCuisineInput {
+  id: ID
+  cusineID: ID
+  cuisineName: String
+  keywords: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+input UpdateUserClickCuisineInput {
+  id: ID!
+  cusineID: ID
+  cuisineName: String
+  keywords: [String]
+  createdAt: String
+  updatedAt: String
+}
+
+input DeleteUserClickCuisineInput {
+  id: ID
+}
+
+type ModelrankMapConnection {
+  items: [rankMap]
+  nextToken: String
+}
+
+input ModelrankMapFilterInput {
+  id: ModelIDFilterInput
+  keyword: ModelStringFilterInput
+  count: ModelIntFilterInput
+  userId: ModelIDFilterInput
+  createdAt: ModelStringFilterInput
+  updatedAt: ModelStringFilterInput
+  and: [ModelrankMapFilterInput]
+  or: [ModelrankMapFilterInput]
+  not: ModelrankMapFilterInput
+}
+
+input CreateRankMapInput {
+  id: ID!
+  keyword: [String]
+  count: Int!
+  userId: ID
+  createdAt: String
+  updatedAt: String
+}
+
+input UpdateRankMapInput {
+  id: ID!
+  keyword: [String]
+  count: Int!
+  userId: ID
+  createdAt: String
+  updatedAt: String
+}
+
+input DeleteRankMapInput {
+  id: ID!
+  count: Int!
+}
+
+type ModelsharingConnection {
+  items: [sharing]
+  nextToken: String
+}
+
+input ModelsharingFilterInput {
+  myId: ModelIDFilterInput
+  myEmail: ModelStringFilterInput
+  myUserName: ModelStringFilterInput
+  friendEmail: ModelIDFilterInput
+  friendUsername: ModelStringFilterInput
+  favourites: ModelStringFilterInput
+  unread: ModelBooleanFilterInput
+  createdAt: ModelStringFilterInput
+  updatedAt: ModelStringFilterInput
+  and: [ModelsharingFilterInput]
+  or: [ModelsharingFilterInput]
+  not: ModelsharingFilterInput
+}
+
+input CreateSharingInput {
+  myId: ID!
+  myEmail: String
+  myUserName: String
+  friendEmail: ID!
+  friendUsername: String
+  favourites: [String]
+  message: MessageInput
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+input UpdateSharingInput {
+  myId: ID!
+  myEmail: String
+  myUserName: String
+  friendEmail: ID!
+  friendUsername: String
+  favourites: [String]
+  message: MessageInput
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+input DeleteSharingInput {
+  myId: ID!
+  friendEmail: ID!
+}
+
+input CreateShareHistoryInput {
+  id: ID
+  senderId: ID!
+  senderEmail: String
+  senderUsername: String
+  receiverEmail: String!
+  receiverUsername: String
+  favourites: [String]
+  message: MessageInput
+  unread: Boolean
+  createdAt: String
+  updatedAt: String
+}
+
+input DeleteShareHistoryInput {
+  id: ID
+}
+
+input ModelIntKeyConditionInput {
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+input ModelIDKeyConditionInput {
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  between: [ID]
+  beginsWith: ID
+}

@@ -73,6 +73,7 @@ export const getUser = `query GetUser($id: ID!) {
       id
       dishName
     }
+    recommendDishesNew
     profilePic
     myFriendEmails
     myFriendUsernames
@@ -103,6 +104,7 @@ export const listUsers = `query ListUsers(
         id
         dishName
       }
+      recommendDishesNew
       profilePic
       myFriendEmails
       myFriendUsernames

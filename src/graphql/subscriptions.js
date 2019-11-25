@@ -16,6 +16,7 @@ export const onCreateUser = `subscription OnCreateUser($owner: String!) {
       id
       dishName
     }
+    recommendDishesNew
     profilePic
     myFriendEmails
     myFriendUsernames
@@ -41,6 +42,7 @@ export const onUpdateUser = `subscription OnUpdateUser($owner: String!) {
       id
       dishName
     }
+    recommendDishesNew
     profilePic
     myFriendEmails
     myFriendUsernames
@@ -66,6 +68,7 @@ export const onDeleteUser = `subscription OnDeleteUser($owner: String!) {
       id
       dishName
     }
+    recommendDishesNew
     profilePic
     myFriendEmails
     myFriendUsernames

@@ -63,7 +63,10 @@ export default class ClickRecommendation extends Component {
     this.scroll.scrollTo({ x: 0, y: 0, animated: true });
     let i = 0;
     this.setState({ result: [] });
-    if ((this.state.clickList.length < 1) || (this.state.clickList[0] == "<empty>")) {
+    if (
+      this.state.clickList.length < 1 ||
+      this.state.clickList[0] == "<empty>"
+    ) {
       this.setState({ fontColour: "#000000" });
     } else {
       for (i = 0; i < this.state.clickList.length; i++) {
@@ -82,7 +85,7 @@ export default class ClickRecommendation extends Component {
             let url = "";
             let foodID = "";
             let type = "";
-            console.log("error here", responseJson)
+            console.log("error here", responseJson);
             foodID = JSON.stringify(responseJson.id);
 
             name = JSON.stringify(responseJson.title);
@@ -95,7 +98,11 @@ export default class ClickRecommendation extends Component {
               type = "jpg";
             }
 
-            url = "https://spoonacular.com/recipeImages/" + foodID + "-480x360." + type;
+            url =
+              "https://spoonacular.com/recipeImages/" +
+              foodID +
+              "-480x360." +
+              type;
 
             this.setState(prevState => ({
               result: [
@@ -159,11 +166,11 @@ export default class ClickRecommendation extends Component {
       graphqlOperation(getUser, { id: this.state.userId })
     ).then(response => {
       //Remove duplicates
-      let click = response.data.getUser["favourites"].concat();
-      console.log("favourites: ", click);
+      let click = response.data.getUser["recommendDishesNew"].concat();
+      console.log("recommendDishesNew: ", click);
 
       this.setState({
-        clickList: click,
+        clickList: click
       });
     });
 
@@ -254,7 +261,11 @@ export default class ClickRecommendation extends Component {
       }
     }
 
-    this.setState({ clickList: likesShown, fav: likeList, favSearch: likeListSearch });
+    this.setState({
+      clickList: likesShown,
+      fav: likeList,
+      favSearch: likeListSearch
+    });
     this.updateFavourites();
   };
 
