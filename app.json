@@ -1,8 +1,8 @@
 {
-  "name": "foodapp",
-  "displayName": "Welcome to Food(d)",
+  "name": "foo(D)",
+  "displayName": "Welcome to Foo(D)",
   "expo": {
-    "name": "foodapp",
+    "name": "foo(D)",
     "slug": "expo-template-bare",
     "privacy": "unlisted",
     "sdkVersion": "35.0.0",
