@@ -117,8 +117,9 @@ class Food_search extends React.Component {
   };
 
   handleSearch = (text, newSearch) => {
+    this.fetchUserFavourites();
     let text0 = text.toString();
-    console.log("help me omg", text0)
+    
     if (newSearch == true) {
       this.setState(
         {

@@ -102,6 +102,7 @@ export default class LikedFoods extends Component {
             url = "https://spoonacular.com/recipeImages/" + foodID + "-480x360." + type;
 
             this.setState(prevState => ({
+              fontColour: "#FFFFFF",
               result: [
                 ...prevState.result,
                 {

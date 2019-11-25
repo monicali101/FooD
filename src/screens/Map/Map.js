@@ -199,7 +199,7 @@ class share_friend extends React.Component {
                       <Text style={{
                         paddingLeft: 5,
                         color: ((item.opening_hours == undefined) ? ("black") : ((item.opening_hours.open_now) ? "green" : "red")),
-                      }}> {((item.opening_hours == undefined) ? ("") : ((item.opening_hours.open_now) ? "Open" : "Close"))}
+                      }}> {((item.opening_hours == undefined) ? ("Unavailable") : ((item.opening_hours.open_now) ? "Open" : "Closed"))}
                       </Text>
 
 
@@ -229,7 +229,7 @@ class share_friend extends React.Component {
 
                 <Button
                   title={"Open in Google Maps"}
-                  color={"#20b2aa"}
+                  color={"#5bbdb9"}
                   onPress={() => this.GoogleMap(item.geometry.location.lat, item.geometry.location.lng)}
                 >
                 </Button>
