@@ -1,20 +1,30 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add -g- expo-cli
+  C:\Program Files\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add react-native-community/netinfo@3.2.1
 
 PATH: 
-  C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Python27\;C:\Python27\Scripts;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\Git\cmd;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk-13.0.1\bin;C:\Program Files\Java\jdk-13.0.1;C:\Program Files\nodejs\;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Users\chine\AppData\Local\Android\Sdk\platform-tools;C:\Program Files (x86)\Yarn\bin\;C:\Users\chine\AppData\Local\Microsoft\WindowsApps;C:\Users\chine\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\chine\AppData\Roaming\npm;C:\Users\chine\AppData\Local\Android\Sdk\platform-tools;C:\Users\chine\AppData\Local\GitHubDesktop\bin;C:\Users\chine\AppData\Local\Yarn\bin
+  C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\nodejs\;C:\Python27;C:\Program Files (x86)\Yarn\bin\;C:\Program Files\Git\cmd;C:\Users\chine\AppData\Local\Programs\Python\Python37-32\Scripts\;C:\Users\chine\AppData\Local\Programs\Python\Python37-32\;C:\Users\chine\AppData\Local\Microsoft\WindowsApps;C:\Users\chine\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\chine\AppData\Roaming\npm;C:\Python27;C:\Users\chine\AppData\Local\Yarn\bin;C:\Program Files\nodejs\node_modules\npm\bin;C:\Users\chine\AppData\Local\Android\Sdk\tools\bin;C:\Users\chine\AppData\Local\Android\Sdk\platform-tools;C:\Users\chine\AppData\Local\Android\Sdk\tools;C:\Users\chine\AppData\Local\Android\Sdk\emulator;C:\Gradle\bin;C:\Program Files\Java\jdk1.8.0_231\bin;C:\Users\chine\AppData\Local\GitHubDesktop\bin
 
 Yarn version: 
   1.19.1
 
 Node version: 
-  12.8.1
+  10.16.3
 
 Platform: 
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, copyfile 'C:\Users\chine\AppData\Local\Yarn\Cache\v6\npm-@aws-amplify-pubsub-1.2.2-df696d5363f289abb0fc581d43ee5af5168b3efb-integrity\node_modules\@aws-amplify\pubsub\src\vendor\paho-mqtt.js' -> 'C:\Users\chine\Desktop\Comp4920--FooD\node_modules\@aws-amplify\pubsub\src\vendor\paho-mqtt.js'
+  Error: https://registry.yarnpkg.com/react-native-community%2fnetinfo: Request "https://registry.yarnpkg.com/react-native-community%2fnetinfo" returned a 405
+      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:66044:18)
+      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:140564:22)
+      at Request.emit (events.js:198:13)
+      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141536:10)
+      at Request.emit (events.js:198:13)
+      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:141458:12)
+      at Object.onceWrapper (events.js:286:20)
+      at IncomingMessage.emit (events.js:203:15)
+      at endReadableNT (_stream_readable.js:1145:12)
+      at process._tickCallback (internal/process/next_tick.js:63:19)
 
 npm manifest: 
   {
@@ -27,6 +37,7 @@ npm manifest:
       "test": "jest"
     },
     "dependencies": {
+      "@react-native-community/netinfo": "^4.6.1",
       "aws-amplify": "^1.2.2",
       "aws-amplify-react-native": "^2.2.2",
       "axios": "^0.19.0",
@@ -34,22 +45,24 @@ npm manifest:
       "expo": "^35.0.0",
       "expo-av": "^7.0.1",
       "expo-cli": "^3.9.0",
+      "geolib": "^3.1.0",
       "google-distance": "^1.0.1",
       "google-distance-matrix": "^1.1.1",
       "immutability-helper": "^3.0.1",
+      "mime": "^2.4.4",
       "native-base": "^2.13.8",
       "react": "16.8.3",
       "react-dom": "16.8.3",
       "react-native": "0.59.10",
       "react-native-contacts": "^4.0.3",
       "react-native-element": "^1.2.1",
-      "react-native-elements": "^1.2.7",
-      "react-native-gesture-handler": "^1.5.0",
+      "react-native-elements": "0.18.1",
+      "react-native-gesture-handler": "1.3.0",
       "react-native-get-location": "^1.2.0",
       "react-native-google-maps-directions": "^2.1.1",
       "react-native-google-places": "^3.1.2",
       "react-native-google-signin": "^2.1.1",
-      "react-native-maps": "0.26.1",
+      "react-native-maps": "0.25.0",
       "react-native-reanimated": "~1.2.0",
       "react-native-router-flux": "^4.0.6",
       "react-native-screens": "^1.0.0-alpha.23",
@@ -1699,6 +1712,11 @@ Lockfile:
       xcode "^2.0.0"
       xmldoc "^0.4.0"
   
+  "@react-native-community/netinfo@^4.6.1":
+    version "4.6.1"
+    resolved "https://registry.yarnpkg.com/@react-native-community/netinfo/-/netinfo-4.6.1.tgz#09960b49217d555e54144f54e63485fe55d673ad"
+    integrity sha512-RIcrNzVnkes6/d5jFprce8i6ruUO9+/FVZZgejlu/TSnysyFXHNJKgcIqxbKx+7XfQxfjrCGeCvsfYxrFrU0zw==
+  
   "@react-navigation/core@^3.5.1":
     version "3.5.1"
     resolved "https://registry.yarnpkg.com/@react-navigation/core/-/core-3.5.1.tgz#7a2339fca3496979305fb3a8ab88c2ca8d8c214d"
@@ -1866,11 +1884,6 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/@types/node/-/node-9.6.55.tgz#7cc1358c9c18e71f6c020e410962971863232cf5"
     integrity sha512-e/5tg8Ok0gSrN6pvHphnwTK0/CD9VPZrtZqpvvpEFAtfs+ZntusgGaWkf2lSEq1OFe2EDPeUMiMVpy4nZpJ4AQ==
   
-  "@types/prop-types@*":
-    version "15.7.3"
-    resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
-    integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
-  
   "@types/q@^1.5.1":
     version "1.5.2"
     resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.2.tgz#690a1475b84f2a884fd07cd797c00f5f31356ea8"
@@ -1880,30 +1893,6 @@ Lockfile:
     version "6.5.3"
     resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.5.3.tgz#1c3b71b091eaeaf5924538006b7f70603ce63d38"
     integrity sha512-Jugo5V/1bS0fRhy2z8+cUAHEyWOATaz4rbyLVvcFs7+dXp5HfwpEwzF1Q11bB10ApUqHf+yTauxI0UXQDwGrbA==
-  
-  "@types/react-native-vector-icons@^6.4.4":
-    version "6.4.4"
-    resolved "https://registry.yarnpkg.com/@types/react-native-vector-icons/-/react-native-vector-icons-6.4.4.tgz#f81dcc371b74a9c408ce12f95b8f494d7543146b"
-    integrity sha512-G1Iry/8i23IPjZzNjydMt/WcjV+T1Xu3cTXDwSsP9lpKu0bA0j+c7AACJ1aIka8HVnWXS41NoZnKkHImO0SMkw==
-    dependencies:
-      "@types/react" "*"
-      "@types/react-native" "*"
-  
-  "@types/react-native@*":
-    version "0.60.23"
-    resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.60.23.tgz#9270f91bbff822a1571feece56cd260f0a1b2831"
-    integrity sha512-hLRCWKNni/e6KEXSNtexXCg0u7CnHla6G6yeZYTMOlyG/bLE41GeLxP4dXJw1hyDsXJYN00Wc3Apr2XQ2TW1LA==
-    dependencies:
-      "@types/prop-types" "*"
-      "@types/react" "*"
-  
-  "@types/react@*":
-    version "16.9.13"
-    resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.13.tgz#b3ea5dd443f4a680599e2abba8cc66f5e1ce0059"
-    integrity sha512-LikzRslbiufJYHyzbHSW0GrAiff8QYLMBFeZmSxzCYGXKxi8m/1PHX+rsVOwhr7mJNq+VIu2Dhf7U6mjFERK6w==
-    dependencies:
-      "@types/prop-types" "*"
-      csstype "^2.2.0"
   
   "@types/retry@^0.12.0":
     version "0.12.0"
@@ -4185,7 +4174,7 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/color-support/-/color-support-1.1.3.tgz#93834379a1cc9a0c61f82f52f0d04322251bd5a2"
     integrity sha512-qiBjkpbMLO/HL68y+lh4q0/O1MZFj2RX6X/KmMa3+gJD3z+WwI1ZzDHysvqHGS3mP6mznPckpXmw1nI9cJjyRg==
   
-  color@^3.0.0, color@^3.1.0, color@^3.1.1, color@~3.1.2:
+  color@^3.0.0, color@^3.1.1, color@~3.1.2:
     version "3.1.2"
     resolved "https://registry.yarnpkg.com/color/-/color-3.1.2.tgz#68148e7f85d41ad7649c5fa8c8106f098d229e10"
     integrity sha512-vXTJhHebByxZn3lDvDJYw4lR5+uB3vuoHsuYA5AKuxRVn5wzzIfQKGLBmgdVRHKTJYeK5rvJcHnrd0Li49CFpg==
@@ -4763,11 +4752,6 @@ Lockfile:
     dependencies:
       cssom "0.3.x"
   
-  csstype@^2.2.0:
-    version "2.6.7"
-    resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.7.tgz#20b0024c20b6718f4eda3853a1f5a1cce7f5e4a5"
-    integrity sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ==
-  
   ctype@0.5.3:
     version "0.5.3"
     resolved "https://registry.yarnpkg.com/ctype/-/ctype-0.5.3.tgz#82c18c2461f74114ef16c135224ad0b9144ca12f"
@@ -4919,11 +4903,6 @@ Lockfile:
     version "2.2.1"
     resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
     integrity sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==
-  
-  deepmerge@^3.1.0:
-    version "3.3.0"
-    resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.3.0.tgz#d3c47fd6f3a93d517b14426b0628a17b0125f5f7"
-    integrity sha512-GRQOafGHwMHpjPx9iCvTgpu9NojZ49q794EEL94JVEw6VaeA8XTUyBKvAkOOjBX9oJNiV6G3P+T+tihFjo2TqA==
   
   default-gateway@^4.2.0:
     version "4.2.0"
@@ -6539,6 +6518,11 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/genfun/-/genfun-5.0.0.tgz#9dd9710a06900a5c4a5bf57aca5da4e52fe76537"
     integrity sha512-KGDOARWVga7+rnB3z9Sd2Letx515owfk0hSxHGuqjANb1M+x2bGZGqHLiozPsYMdM2OubeMni/Hpwmjq6qIUhA==
   
+  geolib@^3.1.0:
+    version "3.1.0"
+    resolved "https://registry.yarnpkg.com/geolib/-/geolib-3.1.0.tgz#c2b5124105f2cc37f097700f8ec63e65c7061920"
+    integrity sha512-46P2RFHUskJGVi8jE389tK2CPmpnpU+7bRr3hQks7ojU7dEqtqKbih+yB1nBXTTpUUt47VPen16oMV3P6IRQyg==
+  
   get-caller-file@^1.0.1:
     version "1.0.3"
     resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
@@ -6855,11 +6839,6 @@ Lockfile:
       duplexer "^0.1.1"
       pify "^4.0.1"
   
-  hammerjs@^2.0.8:
-    version "2.0.8"
-    resolved "https://registry.yarnpkg.com/hammerjs/-/hammerjs-2.0.8.tgz#04ef77862cff2bb79d30f7692095930222bf60f1"
-    integrity sha1-BO93hiz/K7edMPdpIJWTAiK/YPE=
-  
   handle-thing@^2.0.0:
     version "2.0.0"
     resolved "https://registry.yarnpkg.com/handle-thing/-/handle-thing-2.0.0.tgz#0e039695ff50c93fc288557d696f3c1dc6776754"
@@ -7046,13 +7025,6 @@ Lockfile:
     version "3.3.0"
     resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.0.tgz#b09178f0122184fb95acf525daaecb4d8f45958b"
     integrity sha512-0XsbTXxgiaCDYDIWFcwkmerZPSwywfUqYmwT4jzewKTQSWoE6FCMoUVOeBJWK3E/CrWbxRG3m5GzY4lnIwGRBA==
-    dependencies:
-      react-is "^16.7.0"
-  
-  hoist-non-react-statics@^3.1.0:
-    version "3.3.1"
-    resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-3.3.1.tgz#101685d3aff3b23ea213163f6e8e12f4f111e19f"
-    integrity sha512-wbg3bpgA/ZqWrZuMOeJi8+SKMhr7X9TesL/rXMjTzh0p0JUBo3II8DHboYbuIXWRlttrUFxwcu/5kygrCw8fJw==
     dependencies:
       react-is "^16.7.0"
   
@@ -10330,7 +10302,7 @@ Lockfile:
     dependencies:
       is-wsl "^1.1.0"
   
-  opencollective-postinstall@^2.0.0, opencollective-postinstall@^2.0.2:
+  opencollective-postinstall@^2.0.2:
     version "2.0.2"
     resolved "https://registry.yarnpkg.com/opencollective-postinstall/-/opencollective-postinstall-2.0.2.tgz#5657f1bede69b6e33a45939b061eb53d3c6c3a89"
     integrity sha512-pVOEP16TrAO2/fjej1IdOyupJY8KDUM1CvsaScRbw6oddvpQoOfGk4ywha0HKKVAD6RkW4x6Q+tNBwhf3Bgpuw==
@@ -11867,6 +11839,16 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/react-native-element/-/react-native-element-1.2.1.tgz#02165505422e2521a58e5c1d6845af67fcf3b04b"
     integrity sha512-fbkzGRNyu2b5vAQEBIAKAmiYoy2RNzf2DqHEJI3W/R+cGMdatDkXFXeQISEMziNdmeMUi5YuURZcf48J+xCb/w==
   
+  react-native-elements@0.18.1:
+    version "0.18.1"
+    resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.18.1.tgz#6914b2d7cd4f28fc41cb8eb45453ae284ba4a0a0"
+    integrity sha1-aRSy181PKPxBy460VFOuKEukoKA=
+    dependencies:
+      lodash.isempty "^4.4.0"
+      lodash.times "^4.3.2"
+      opencollective "^1.0.3"
+      prop-types "^15.5.8"
+  
   react-native-elements@^0.19.1:
     version "0.19.1"
     resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.19.1.tgz#f92b69d864a150215d01f81fe3c52a9cada83e45"
@@ -11877,29 +11859,14 @@ Lockfile:
       opencollective "^1.0.3"
       prop-types "^15.5.8"
   
-  react-native-elements@^1.2.7:
-    version "1.2.7"
-    resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.2.7.tgz#1eca2db715c41722aeb67aea62bd2a4621adb134"
-    integrity sha512-0S+0R1cbItl15i64qrkWnyMztwpw60d0SUsZGVDKRAMf0Jvq9Clgyh/MzxJx2sr42mbedQP1sg5Et4fZM7Fp1w==
+  react-native-gesture-handler@1.3.0:
+    version "1.3.0"
+    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.3.0.tgz#d0386f565928ccc1849537f03f2e37fd5f6ad43f"
+    integrity sha512-ASRFIXBuKRvqlmwkWJhV8yP2dTpvcqVrLNpd7FKVBFHYWr6SAxjGyO9Ik8w1lAxDhMlRP2IcJ9p9eq5X2WWeLQ==
     dependencies:
-      "@types/react-native-vector-icons" "^6.4.4"
-      color "^3.1.0"
-      deepmerge "^3.1.0"
-      hoist-non-react-statics "^3.1.0"
-      opencollective-postinstall "^2.0.0"
-      prop-types "^15.7.2"
-      react-native-ratings "^6.3.0"
-      react-native-status-bar-height "^2.2.0"
-  
-  react-native-gesture-handler@^1.5.0:
-    version "1.5.0"
-    resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.5.0.tgz#df7dc5285c152e0656db70f55200fa632c4f45af"
-    integrity sha512-YUOXHsGLajK1cFReQ4Xh0H9GUTxDW9cUZEVu1q+dVqur2urSKi63KklAFB2l8Neob9nl1E/w0c5hGcBP9FMCIA==
-    dependencies:
-      hammerjs "^2.0.8"
       hoist-non-react-statics "^2.3.1"
-      invariant "^2.2.4"
-      prop-types "^15.7.2"
+      invariant "^2.2.2"
+      prop-types "^15.5.10"
   
   react-native-get-location@^1.2.0:
     version "1.2.0"
@@ -11934,18 +11901,10 @@ Lockfile:
       prop-types "^15.6.2"
       react-native-iphone-x-helper "^1.0.3"
   
-  react-native-maps@0.26.1:
-    version "0.26.1"
-    resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.26.1.tgz#6ec316259b38d259c8974448d894bd7a23101da4"
-    integrity sha512-p4VTB8YB5ZmOmDRCUpoHZkm05amZwhIo04AJMBbB9+JAR2PNNfpo0vceoWX0Mag4wnePkdzPomeWMplr/wimTg==
-  
-  react-native-ratings@^6.3.0:
-    version "6.5.0"
-    resolved "https://registry.yarnpkg.com/react-native-ratings/-/react-native-ratings-6.5.0.tgz#a1606ccba3c5b54eec8e6cfa4765a45cf0e4ab8d"
-    integrity sha512-YMcfQ7UQCmXGEc/WPlukHSHs5yvckTwjq5fTRk1FG8gaO7fZCNygEUGPuw4Dbvvp3IlsCUn0bOQd63RYsb7NDQ==
-    dependencies:
-      lodash "^4.17.4"
-      prop-types "^15.5.10"
+  react-native-maps@0.25.0:
+    version "0.25.0"
+    resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.25.0.tgz#81bc51eb50e33811a9e1c345cc48869413ead67d"
+    integrity sha512-PFJuW1pt+HnnnN0m0OGk29RSvICFVkK/DScX6cUk0SuCSN2DAHx0y6y57lZyYXcYqU4J4usNpfxgp/ccjASDiw==
   
   react-native-reanimated@~1.2.0:
     version "1.2.0"
@@ -12006,11 +11965,6 @@ Lockfile:
       react-native-animatable "^1.2.4"
       react-native-button "^2.3.0"
       react-native-vector-icons "^4.5.0"
-  
-  react-native-status-bar-height@^2.2.0:
-    version "2.4.0"
-    resolved "https://registry.yarnpkg.com/react-native-status-bar-height/-/react-native-status-bar-height-2.4.0.tgz#de8cee4bb733a196167210d2d0bc1fa10acba3e3"
-    integrity sha512-pWvZFlyIHiuxLugLioq97vXiaGSovFXEyxt76wQtbq0gxv4dGXMPqYow46UmpwOgeJpBhqL1E0EKxnfJRrFz5w==
   
   react-native-swiper@^1.5.14:
     version "1.5.14"
