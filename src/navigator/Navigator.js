@@ -21,7 +21,9 @@ import share_friend from "../screens/Share/share_friend";
 import receive_friend from "../screens/Share/receive_friend";
 import AccountDetail from "../screens//Setting/AccountDetail";
 import GoogleMap from "../screens/Map/Map";
+import ClickRecommendation from "../screens/ClickRecommendation";
 import LoginNavigator from "../../App";
+
 
 const myNavigator = createStackNavigator(
   {
@@ -49,6 +51,7 @@ const myNavigator = createStackNavigator(
     AccountDetail: AccountDetail,
     Map: GoogleMap //,
     // LoginNavigator: LoginNavigator
+    Click: ClickRecommendation
   },
   {
     initialRouteName: "Home",

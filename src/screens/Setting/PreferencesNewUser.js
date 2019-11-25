@@ -469,6 +469,7 @@ class PreferencesNewUser extends React.Component {
     return (
       <ScrollView contentContainerStyle={styles.scrollView}>
         <View style={styles.main}>
+          <Text style={{ fontWeight: "bold", alignSelf: 'center', fontSize: 18, }}></Text>
           <Text style={{ fontWeight: "bold", alignSelf: 'center', margin: 20, fontSize: 18, lineHeight: 30 }}>
             Please input your cuisine preferences:
           </Text>

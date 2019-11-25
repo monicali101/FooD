@@ -3,7 +3,7 @@
 Figma link (wireframe):
 https://www.figma.com/file/w5KqwkUh6mEzhSa5mvX5SA/Foo-D
 Spoonacular API keys:
-e9d38bca69a446e295911c9453b8d9d8 (1st acct)
+e9d38bca69a446e295911c9453b8d9d8 (1st acct) this account will be paid
 41bb3ae188994435afba430de732b502 (2nd acct)
 2563ab89dda34b1389b8dcb12f725899 (3rd acct)
 272ab141254d423892ae4bed14140ed2 (4th acct)

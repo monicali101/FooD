@@ -40,6 +40,14 @@ class MyDrawer extends React.Component {
             }}
           />
           <Btn
+            title="From Your Clicks"
+            source={require("../../assets/icons/click.png")}
+            onPress={() => {
+              navigation.navigate("Click");
+              navigation.closeDrawer();
+            }}
+          />
+          <Btn
             title="Search"
             source={require("../../assets/icons/search.png")}
             onPress={() => {
