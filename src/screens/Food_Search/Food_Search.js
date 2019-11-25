@@ -195,7 +195,7 @@ class Food_search extends React.Component {
                 if (this.state.likedFoods[j] == foodID) {
                   likeIconState = require("../../../assets/icons/heartPink.png");
                 }
-              }    
+              }
 
               name = JSON.stringify(responseJson.results[i].title);
               name = name.substring(1, name.length - 1);
@@ -340,11 +340,11 @@ class Food_search extends React.Component {
         if (Fav[0] == "<empty>") {
           Fav = [];
         }
-  
+
         if (Fav2[0] == "<empty>") {
           Fav2 = [];
         }
-  
+
         let finalFav = Fav.concat(Fav2);
         this.setState({
           likedFoods: finalFav
@@ -460,68 +460,86 @@ class Food_search extends React.Component {
   );
 
   render() {
-    return (
-      <View>
-        <View
-          style={{
-            color: "#FFFFFF",
-            flexDirection: "row",
-            justifyContent: "center", //Horizontally
-            alignItems: "center", //Vertically,
-            marginTop: this.state.filterHeight
-          }}
-        >
-          <Image
-            style={styles.filterIcon}
-            source={require("../../../assets/icons/filter.png")}
-          />
-          <Text style={styles.filterText}> {this.state.filter}</Text>
-        </View>
-        <ScrollView
-          ref={c => {
-            this.scroll = c;
-          }}
-          style={styles.scrollView}
-        >
-          <View
-            style={{
-              alignItems: "center" //Vertically,
-            }}
-          >
-            <FlatList
-              vertical
-              showsVerticalScrollIndicator={false}
-              numColumns={1}
-              data={this.state.result}
-              renderItem={this.renderFood}
-              key={Math.random().toString()}
-            />
-          </View>
-          <TouchableOpacity
-            style={{
-              flexDirection: "row",
-              justifyContent: "center", //Horizontally
-              alignItems: "stretch",
-              paddingTop: 13,
-              width: "100%",
-              height: 90 + this.state.filterHeight,
-              backgroundColor: this.state.buttonColour
-            }}
-            onPress={this.next}
-          >
-            <Text
+    // Check for network connectivity
+    NetInfo.isConnected.fetch().done((isConnected) => {
+      if (isConnected) {
+        return (
+          <View>
+            <View
               style={{
-                fontSize: 18,
-                fontWeight: "bold",
-                color: this.state.textColour
+                color: "#FFFFFF",
+                flexDirection: "row",
+                justifyContent: "center", //Horizontally
+                alignItems: "center", //Vertically,
+                marginTop: this.state.filterHeight
               }}
             >
-              {this.state.button}
-            </Text>
-          </TouchableOpacity>
-        </ScrollView>
-      </View>
-    );
+              <Image
+                style={styles.filterIcon}
+                source={require("../../../assets/icons/filter.png")}
+              />
+              <Text style={styles.filterText}> {this.state.filter}</Text>
+            </View>
+            <ScrollView
+              ref={c => {
+                this.scroll = c;
+              }}
+              style={styles.scrollView}
+            >
+              <View
+                style={{
+                  alignItems: "center" //Vertically,
+                }}
+              >
+                <FlatList
+                  vertical
+                  showsVerticalScrollIndicator={false}
+                  numColumns={1}
+                  data={this.state.result}
+                  renderItem={this.renderFood}
+                  key={Math.random().toString()}
+                />
+              </View>
+              <TouchableOpacity
+                style={{
+                  flexDirection: "row",
+                  justifyContent: "center", //Horizontally
+                  alignItems: "stretch",
+                  paddingTop: 13,
+                  width: "100%",
+                  height: 90 + this.state.filterHeight,
+                  backgroundColor: this.state.buttonColour
+                }}
+                onPress={this.next}
+              >
+                <Text
+                  style={{
+                    fontSize: 18,
+                    fontWeight: "bold",
+                    color: this.state.textColour
+                  }}
+                >
+                  {this.state.button}
+                </Text>
+              </TouchableOpacity>
+            </ScrollView>
+          </View>
+        );
+      }
+      else {
+        <Text
+          style={{
+            fontSize: 30,
+            fontWeight: "bold",
+            color: "black",
+            alignSelf: "center"
+          }}
+        >
+          No Internet!!
+        </Text>
+      }
+    });
+
   }
 }
 
