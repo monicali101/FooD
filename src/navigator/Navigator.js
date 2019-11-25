@@ -49,9 +49,9 @@ const myNavigator = createStackNavigator(
     share_friend: share_friend,
     receive_friend: receive_friend,
     AccountDetail: AccountDetail,
-    Map: GoogleMap //,
+    Map: GoogleMap,
     // LoginNavigator: LoginNavigator
-    Click: ClickRecommendation
+    Click: ClickRecommendation,
   },
   {
     initialRouteName: "Home",
