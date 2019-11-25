@@ -305,7 +305,7 @@ class Food_search extends React.Component {
 
     var cognitoUser = Auth.currentUserInfo()
       .then(user => {
-        console.log("user: ", user);
+        console.log("user: ", user);
         var record = {
           id: user.attributes.sub,
           favouriteSearch: myArray
