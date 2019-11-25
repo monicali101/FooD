@@ -6,6 +6,7 @@ import { withAuthenticator } from "aws-amplify-react-native";
 import HomeNav from "./src/navigator/HomeNav";
 import NetInfo from "@react-native-community/netinfo";
 import { Text } from "react-native-elements";
+
 Amplify.configure(awsmobile);
 Analytics.configure({ disabled: true });
 global.offset = 0;
@@ -71,3 +72,9 @@ class App extends Component {
 export default withAuthenticator(App, false);
 //export default (App);
 // removes extra space at top of header on android
+
+// Disable all warning
+console.error = (error) => error.apply;
+console.disableYellowBox = true;
+console._errorOriginal = console.error.bind(console);
+console.reportErrorsAsExceptions = false;
