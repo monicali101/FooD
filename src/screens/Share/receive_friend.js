@@ -5,7 +5,8 @@ import {
   Image,
   TouchableHighlight,
   ScrollView,
-  FlatList
+  FlatList,
+  Alert
 } from "react-native";
 
 import Img_menu from "../../Button/Img_menu";
@@ -18,7 +19,7 @@ import { StyleSheet } from "react-native";
 
 export default class receive_friend extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: navigation.getParam("friendName") + "'s Favorite List",
+    title: navigation.getParam("friendName") + "'s Favorite List"
     // title: JSON.stringify(navigation.getParam("favourites")),
   });
 
@@ -27,6 +28,8 @@ export default class receive_friend extends Component {
       "################# ",
       this.props.navigation.state.params.favourites
     );
+
+    return this.props.navigation.state.params.favourites;
   }
 
   constructor(props) {
@@ -123,32 +126,32 @@ export default class receive_friend extends Component {
     }
   };
 
+  componentWillMount() {
+    this.setState({
+      likedFoods: this.props.navigation.state.params.favourites
+    });
+  }
+
   componentDidMount = () => {
     //match sure API is called again when returned from Preferences survey
     console.log("==============================");
-    this.focusListener = this.props.navigation.addListener("didFocus", () => {
-      this.createUser()
-        .then(response => {
-          this.fetchUserLikes().then(userPref => {
-            this.query();
-          });
-        })
-        .catch(err => console.log(err));
-    });
+    this.query();
+
+    // this.focusListener = this.props.navigation.addListener("didFocus", () => {
+    //   this.query().catch(err => console.log(err));
+    // });
   };
 
-  componentWillUnmount() {
-    // Remove the event listener
-    this.focusListener.remove();
-  }
+  // componentWillUnmount() {
+  //   // Remove the event listener
+  //   this.focusListener.remove();
+  // }
 
   createUser() {
     var cognitoUser = Auth.currentUserInfo().then(user => {
       this.setState({
         userId: user.attributes.sub
       });
-
-      this.test();
 
       API.graphql(graphqlOperation(getUser, { id: user.attributes.sub })).then(
         response => {
@@ -162,50 +165,50 @@ export default class receive_friend extends Component {
   }
 
   fetchUserLikes() {
-    console.log("Getting preferences for userId: ", this.state.userId);
+    // console.log("Getting preferences for userId: ", this.state.userId);
 
-    var userPref = API.graphql(
-      graphqlOperation(getUser, { id: this.state.userId })
-    ).then(response => {
-      //Remove duplicates
-      let Fav = response.data.getUser["favourites"].concat();
-      let Fav2 = response.data.getUser["favouriteSearch"].concat();
-      console.log("favouritesSearch: ", Fav2);
-      console.log("favourites: ", Fav);
-      //Concatenate the two arrays
-      if (Fav[0] == "<empty>") {
-        Fav = [];
-      }
+    // var userPref = API.graphql(
+    //   graphqlOperation(getUser, { id: this.state.userId })
+    // ).then(response => {
+    //   //Remove duplicates
+    //   let Fav = response.data.getUser["favourites"].concat();
+    //   let Fav2 = response.data.getUser["favouriteSearch"].concat();
+    //   console.log("favouritesSearch: ", Fav2);
+    //   console.log("favourites: ", Fav);
+    //   //Concatenate the two arrays
+    //   if (Fav[0] == "<empty>") {
+    //     Fav = [];
+    //   }
 
-      if (Fav2[0] == "<empty>") {
-        Fav2 = [];
-      }
+    //   if (Fav2[0] == "<empty>") {
+    //     Fav2 = [];
+    //   }
 
-      let finalFav = Fav.concat(Fav2);
-      let i,
-        j = 0;
-      for (i = 0; i < finalFav.length; ++i) {
-        for (j = i + 1; j < finalFav.length; ++j) {
-          if (finalFav[i] === finalFav[j]) {
-            finalFav.splice(j--, 1);
-          }
-        }
-      }
-      console.log("concat favs ", finalFav);
-      // this.setState({
-      //   likedFoods: finalFav,
-      //   fav: Fav,
-      //   favSearch: Fav2
-      // });
+    //   let finalFav = Fav.concat(Fav2);
+    //   let i,
+    //     j = 0;
+    //   for (i = 0; i < finalFav.length; ++i) {
+    //     for (j = i + 1; j < finalFav.length; ++j) {
+    //       if (finalFav[i] === finalFav[j]) {
+    //         finalFav.splice(j--, 1);
+    //       }
+    //     }
+    //   }
+    //   console.log("concat favs ", finalFav);
+    //   // this.setState({
+    //   //   likedFoods: finalFav,
+    //   //   fav: Fav,
+    //   //   favSearch: Fav2
+    //   // });
 
-      this.setState({
-        likedFoods: finalFav,
-        fav: [],
-        favSearch: this.props.navigation.state.params.favourites ////////////// THIS IS THE FAVOURITE LIST OF THE FRIEND YOU CLICKED
-      });
+    this.setState({
+      likedFoods: this.props.navigation.state.params.favourites
+      // likedFoods: finalFav,
+      // fav: [],
+      // favSearch: this.props.navigation.params.favourites ////////////// THIS IS THE FAVOURITE LIST OF THE FRIEND YOU CLICKED
     });
 
-    return userPref;
+    return this.props.navigation.state.params.favourites;
   }
 
   updateFavourites = () => {
