@@ -98,6 +98,7 @@ class Food_search extends React.Component {
       filterHeight: -40,
       textColour: "#FFFFFF",
       likedFoods: [],
+      likedFoodsSearch: []
     };
   }
 
@@ -290,9 +291,9 @@ class Food_search extends React.Component {
   ////////////////////////AWS Stuff////////////////////////
 
   updateFavourites = () => {
-    var myArray = this.state.likedFoods;
-    for (var item in this.state.likedFoods) {
-      myArray[item] = this.state.likedFoods[item];
+    var myArray = this.state.likedFoodsSearch;
+    for (var item in this.state.likedFoodsSearch) {
+      myArray[item] = this.state.likedFoodsSearch[item];
     }
     console.log("received favourite: ", myArray);
 
@@ -347,7 +348,8 @@ class Food_search extends React.Component {
 
         let finalFav = Fav.concat(Fav2);
         this.setState({
-          likedFoods: finalFav
+          likedFoods: finalFav,
+          likedFoodsSearch: Fav2
         });
 
         return fetchedFavourites;
@@ -396,7 +398,7 @@ class Food_search extends React.Component {
   ////////////////////////Change Like ////////////////////////
 
   changeLike = (id, num) => {
-    let likeList = this.state.likedFoods;
+    let likeList = this.state.likedFoodsSearch;
     let i = 0;
     let found = false;
 
@@ -422,7 +424,7 @@ class Food_search extends React.Component {
             likeIcon: { $set: require("../../../assets/icons/heartPink.png") }
           }
         }),
-        likedFoods: likeList
+        likedFoodsSearch: likeList
       });
     } else {
       this.setState({
@@ -431,10 +433,10 @@ class Food_search extends React.Component {
             likeIcon: { $set: require("../../../assets/icons/heart.png") }
           }
         }),
-        likedFoods: likeList
+        likedFoodsSearch: likeList
       });
     }
-    console.log("Liked food array: ", this.state.likedFoods);
+    console.log("Liked food array: ", this.state.likedFoodsSearch);
     this.updateFavourites();
   };
 
@@ -460,9 +462,7 @@ class Food_search extends React.Component {
   );
 
   render() {
-    // Check for network connectivity
-    NetInfo.isConnected.fetch().done((isConnected) => {
-      if (isConnected) {
+
         return (
           <View>
             <View
@@ -526,21 +526,7 @@ class Food_search extends React.Component {
           </View>
         );
       }
-      else {
-        <Text
-          style={{
-            fontSize: 30,
-            fontWeight: "bold",
-            color: "black",
-            alignSelf: "center"
-          }}
-        >
-          No Internet!!
-        </Text>
-      }
-    });
-
-  }
+     
 }
 
 console.disableYellowBox = true;
