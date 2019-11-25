@@ -341,7 +341,7 @@ const styles = StyleSheet.create({
   foodView: {
     flexDirection: "column",
     flex: 1,
-    height: 313,
+    height: 295,
     width: 340,
     borderColor: "#cccccc",
     borderWidth: 0.5,

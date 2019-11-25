@@ -415,8 +415,8 @@ class share_friend extends React.Component {
                   hideChevron
                 />
                 <Button
-                  title={item.unread ? "Unread Message" : "Read"}
-                  color={item.unread ? "red" : "#20b2aa"}
+                  title={item.unread ? "Unread Message" : "View Again"}
+                  color={item.unread ? "#eb6262" : "#5bbdb9"}
                   // onPress={
                   //   item.unread
                   //     ? () =>

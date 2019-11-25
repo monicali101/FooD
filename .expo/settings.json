@@ -1,8 +1,8 @@
 {
+  "urlRandomness": "de-iam",
   "hostType": "localhost",
   "lanType": "ip",
   "dev": true,
   "minify": false,
-  "urlRandomness": "sx-cv4",
   "https": false
 }
