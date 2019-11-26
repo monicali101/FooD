@@ -40,7 +40,7 @@ class MyDrawer extends React.Component {
             }}
           />
           <Btn
-            title="From Your Clicks"
+            title="Smart Clicks"
             source={require("../../assets/icons/click.png")}
             onPress={() => {
               navigation.navigate("Click");
@@ -72,7 +72,7 @@ class MyDrawer extends React.Component {
             }}
           />
           <Btn
-            title="Nearby Restaurants"
+            title="Restaurants"
             source={require("../../assets/icons/map.jpg")}
             onPress={() => {
               navigation.navigate("Map");
@@ -80,7 +80,7 @@ class MyDrawer extends React.Component {
             }}
           />
           <Btn
-            title="Account Settings"
+            title="Settings"
             source={require("../../assets/icons/setting.png")}
             onPress={() => {
               navigation.navigate("Setting");

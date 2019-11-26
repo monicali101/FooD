@@ -20,7 +20,7 @@ import { StyleSheet } from "react-native";
 
 export default class ClickRecommendation extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "Recommendation Based On Your Clicks",
+    title: "Smart Clicks",
     headerLeft: (
       <Img_menu
         onPress={() => {
@@ -313,6 +313,16 @@ export default class ClickRecommendation extends Component {
               alignItems: "center" //Vertically,
             }}
           >
+            <Text
+              style={{
+                fontSize: 18,
+                textAlign: "center",
+                marginTop: 20,
+                marginBottom: 20
+              }}
+            >
+              Recommendation based on click history:
+            </Text>
             <FlatList
               vertical
               showsVerticalScrollIndicator={false}
