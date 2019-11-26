@@ -328,7 +328,7 @@ class search_friend extends React.Component {
           searchIcond
           round
           onSubmitEditing={event => params.handleSearch(event.nativeEvent.text)} //text => params.handleSearch(text)}
-          placeholder="Enter Foo(D) account username"
+          placeholder="Enter Foo(D) username"
           value={params.data}
         />
       )
