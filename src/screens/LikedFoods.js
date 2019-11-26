@@ -6,7 +6,8 @@ import {
   Image,
   TouchableHighlight,
   ScrollView,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from "react-native";
 
 import Img_menu from "../Button/Img_menu";
@@ -42,7 +43,7 @@ export default class LikedFoods extends Component {
       fav: [],
       favSearch: [],
       fontColour: "#FFFFFF",
-      prefLoaded: false
+      ide: true
     };
   }
 
@@ -65,7 +66,10 @@ export default class LikedFoods extends Component {
     this.scroll.scrollTo({ x: 0, y: 0, animated: true });
     let i = 0;
     this.setState({ result: [] });
-    if ((this.state.likedFoods.length < 1) || (this.state.likedFoods[0] == "<empty>")) {
+    if (
+      this.state.likedFoods.length < 1 ||
+      this.state.likedFoods[0] == "<empty>"
+    ) {
       this.setState({ fontColour: "#000000" });
     } else {
       for (i = 0; i < this.state.likedFoods.length; i++) {
@@ -84,13 +88,11 @@ export default class LikedFoods extends Component {
             let url = "";
             let foodID = "";
             let type = "";
-            console.log("error here", responseJson)
+            console.log("error here", responseJson);
             foodID = JSON.stringify(responseJson.id);
 
             name = JSON.stringify(responseJson.title);
             name = name.substring(1, name.length - 1);
-
-
 
             if (responseJson.image != null) {
               type = responseJson.image.toString();
@@ -99,7 +101,11 @@ export default class LikedFoods extends Component {
               type = "jpg";
             }
 
-            url = "https://spoonacular.com/recipeImages/" + foodID + "-480x360." + type;
+            url =
+              "https://spoonacular.com/recipeImages/" +
+              foodID +
+              "-480x360." +
+              type;
 
             this.setState(prevState => ({
               fontColour: "#FFFFFF",
@@ -178,7 +184,8 @@ export default class LikedFoods extends Component {
       }
 
       let finalFav = Fav.concat(Fav2);
-      let i, j = 0;
+      let i,
+        j = 0;
       for (i = 0; i < finalFav.length; ++i) {
         for (j = i + 1; j < finalFav.length; ++j) {
           if (finalFav[i] === finalFav[j]) {
@@ -190,7 +197,8 @@ export default class LikedFoods extends Component {
       this.setState({
         likedFoods: finalFav,
         fav: Fav,
-        favSearch: Fav2
+        favSearch: Fav2,
+        ide: false
       });
     });
 
@@ -281,7 +289,11 @@ export default class LikedFoods extends Component {
       }
     }
 
-    this.setState({ likedFoods: likesShown, fav: likeList, favSearch: likeListSearch });
+    this.setState({
+      likedFoods: likesShown,
+      fav: likeList,
+      favSearch: likeListSearch
+    });
     this.updateFavourites();
   };
 
@@ -307,49 +319,59 @@ export default class LikedFoods extends Component {
   );
 
   render() {
-    return (
-      <ScrollView
-        ref={c => {
-          this.scroll = c;
-        }}
-      >
+    if (this.state.ide) {
+      return (
         <View
-          style={{
-            alignItems: "center" //Vertically,
-          }}
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
-          <FlatList
-            vertical
-            showsVerticalScrollIndicator={false}
-            numColumns={1}
-            data={this.state.result}
-            renderItem={this.renderFood}
-          />
+          <ActivityIndicator />
         </View>
+      );
+    } else {
+      return (
+        <ScrollView
+          ref={c => {
+            this.scroll = c;
+          }}
+        >
+          <View
+            style={{
+              alignItems: "center" //Vertically,
+            }}
+          >
+            <FlatList
+              vertical
+              showsVerticalScrollIndicator={false}
+              numColumns={1}
+              data={this.state.result}
+              renderItem={this.renderFood}
+            />
+          </View>
 
-        <Text
-          style={{
-            fontSize: 18,
-            fontWeight: "bold",
-            paddingBottom: 20,
-            paddingTop: 20,
-            color: this.state.fontColour,
-            textAlign: "center"
-          }}
-        >
-          No foods saved in Favourites :(
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            color: this.state.fontColour,
-            textAlign: "center"
-          }}
-        >
-          Not to worry! You can add them through Home or Search.
-        </Text>
-      </ScrollView>
-    );
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: "bold",
+              paddingBottom: 20,
+              paddingTop: 20,
+              color: this.state.fontColour,
+              textAlign: "center"
+            }}
+          >
+            No foods saved in Favourites :(
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              color: this.state.fontColour,
+              textAlign: "center"
+            }}
+          >
+            Not to worry! You can add them through Home or Search.
+          </Text>
+        </ScrollView>
+      );
+    }
   }
 }
 

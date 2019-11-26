@@ -6,7 +6,8 @@ import {
   Image,
   TouchableHighlight,
   ScrollView,
-  FlatList
+  FlatList,
+  ActivityIndicator
 } from "react-native";
 
 import Img_menu from "../Button/Img_menu";
@@ -40,7 +41,7 @@ export default class ClickRecommendation extends Component {
       numberLiked: 4,
       clickList: [],
       fontColour: "#FFFFFF",
-      prefLoaded: false
+      ide: true
     };
   }
 
@@ -170,7 +171,8 @@ export default class ClickRecommendation extends Component {
       console.log("recommendDishesNew: ", click);
 
       this.setState({
-        clickList: click
+        clickList: click,
+        ide: false
       });
     });
 
@@ -291,49 +293,59 @@ export default class ClickRecommendation extends Component {
   );
 
   render() {
-    return (
-      <ScrollView
-        ref={c => {
-          this.scroll = c;
-        }}
-      >
+    if (this.state.ide) {
+      return (
         <View
-          style={{
-            alignItems: "center" //Vertically,
-          }}
+          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
         >
-          <FlatList
-            vertical
-            showsVerticalScrollIndicator={false}
-            numColumns={1}
-            data={this.state.result}
-            renderItem={this.renderFood}
-          />
+          <ActivityIndicator />
         </View>
+      );
+    } else {
+      return (
+        <ScrollView
+          ref={c => {
+            this.scroll = c;
+          }}
+        >
+          <View
+            style={{
+              alignItems: "center" //Vertically,
+            }}
+          >
+            <FlatList
+              vertical
+              showsVerticalScrollIndicator={false}
+              numColumns={1}
+              data={this.state.result}
+              renderItem={this.renderFood}
+            />
+          </View>
 
-        <Text
-          style={{
-            fontSize: 18,
-            fontWeight: "bold",
-            paddingBottom: 20,
-            paddingTop: 20,
-            color: this.state.fontColour,
-            textAlign: "center"
-          }}
-        >
-          No dishes to recommend :(
-        </Text>
-        <Text
-          style={{
-            fontSize: 15,
-            color: this.state.fontColour,
-            textAlign: "center"
-          }}
-        >
-          Try looking through Home.
-        </Text>
-      </ScrollView>
-    );
+          <Text
+            style={{
+              fontSize: 18,
+              fontWeight: "bold",
+              paddingBottom: 20,
+              paddingTop: 20,
+              color: this.state.fontColour,
+              textAlign: "center"
+            }}
+          >
+            No dishes to recommend :(
+          </Text>
+          <Text
+            style={{
+              fontSize: 15,
+              color: this.state.fontColour,
+              textAlign: "center"
+            }}
+          >
+            Try looking through Home.
+          </Text>
+        </ScrollView>
+      );
+    }
   }
 }
 
