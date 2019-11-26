@@ -1,7 +1,14 @@
 // ## Some tutorial code from
 // https://github.com/vikrantnegi/react-native-searchable-flatlist/blob/master/src/SearchableList.js
 import React from "react";
-import { View, ActivityIndicator, FlatList, Button, Alert, StyleSheet } from "react-native";
+import {
+  View,
+  ActivityIndicator,
+  FlatList,
+  Button,
+  Alert,
+  StyleSheet
+} from "react-native";
 import { SearchBar, Avatar, ListItem } from "react-native-elements";
 import MenuImage from "../../Button/Img_menu";
 import { listReceivedSharedRecords, getUser } from "../../graphql/queries.js";
@@ -332,14 +339,31 @@ class share_friend extends React.Component {
 
     this.shareFavourites(item, key1)
       .then(response => {
-        Alert.alert(
-          "Your favorites list has been shared to " + item + " !"
-        );
+        Alert.alert("Your favorites list has been shared to " + item + " !");
       })
       .catch(err => {
         console.log(err);
       });
   };
+
+  calcTime(time, offset) {
+    // create Date object for current location
+    var d = new Date(time);
+
+    // convert to msec
+    // add local time zone offset
+    // get UTC time in msec
+    var utc = d.getTime() + d.getTimezoneOffset() * 60000;
+
+    // create new Date object for different city
+    // using supplied offset
+    var nd = new Date(utc + 3600000 * offset);
+
+    console.log(nd);
+
+    // return time as a string
+    return `${nd.toLocaleDateString()} ${nd.toLocaleTimeString()}`;
+  }
 
   render() {
     const { navigate } = this.props.navigation;
@@ -409,9 +433,10 @@ class share_friend extends React.Component {
                     />
                   }
                   title={`${item.name}`}
-                  subtitle={`${item.createdAt.split("T")[0]} ${
-                    item.createdAt.split("T")[1].split(".")[0]
-                    } `}
+                  // subtitle={`${item.createdAt.split("T")[0]} ${
+                  //   item.createdAt.split("T")[1].split(".")[0]
+                  //   } `}
+                  subtitle={this.calcTime(item.createdAt, 11)}
                   hideChevron
                 />
                 <Button
@@ -432,17 +457,17 @@ class share_friend extends React.Component {
                   onPress={
                     item.unread
                       ? () =>
-                        this.convertToRead(item).then(() => {
+                          this.convertToRead(item).then(() => {
+                            navigate("receive_friend", {
+                              friendName: item.name,
+                              favourites: item.favourites
+                            });
+                          })
+                      : () =>
                           navigate("receive_friend", {
                             friendName: item.name,
                             favourites: item.favourites
-                          });
-                        })
-                      : () =>
-                        navigate("receive_friend", {
-                          friendName: item.name,
-                          favourites: item.favourites
-                        })
+                          })
                   }
                 ></Button>
               </View>
