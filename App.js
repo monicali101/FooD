@@ -22,21 +22,26 @@ class App extends Component {
   }
 
   componentDidMount() {
-    NetInfo.isConnected.addEventListener('connectionChange', this.handleConnectionChange);
-
-    NetInfo.isConnected.fetch().done(
-      (isConnected) => { this.setState({ connect: isConnected }); }
+    NetInfo.isConnected.addEventListener(
+      "connectionChange",
+      this.handleConnectionChange
     );
+
+    NetInfo.isConnected.fetch().done(isConnected => {
+      this.setState({ connect: isConnected });
+    });
   }
 
   componentWillUnmount() {
-    NetInfo.isConnected.removeEventListener('connectionChange', this.handleConnectionChange);
+    NetInfo.isConnected.removeEventListener(
+      "connectionChange",
+      this.handleConnectionChange
+    );
   }
 
-  handleConnectionChange = (isConnected) => {
+  handleConnectionChange = isConnected => {
     this.setState({ connect: isConnected });
-
-  }
+  };
 
   render() {
     // Check for network connectivity
@@ -44,11 +49,9 @@ class App extends Component {
       return <HomeNav screenProps={{ ...this.props }} />;
       // renders the App component after a successful user sign-in,
       // and it prevents non-sign-in users interact with your app.
-
     } else {
       return (
         <Text
-
           style={[
             {
               flex: 1,
@@ -57,24 +60,26 @@ class App extends Component {
               color: "#333333",
               textAlignVertical: "center",
               textAlign: "center",
-              lineHeight: 15,
+              lineHeight: 15
             }
           ]}
         >
           Please connect to Internet!
         </Text>
-
-      )
+      );
     }
-
   }
 }
-export default withAuthenticator(App, false);
+export default withAuthenticator(App, {
+  signUpConfig: {
+    hiddenDefaults: ["phone_number"]
+  }
+});
 //export default (App);
 // removes extra space at top of header on android
 
 // Disable all warning
-console.error = (error) => error.apply;
+console.error = error => error.apply;
 console.disableYellowBox = true;
 console._errorOriginal = console.error.bind(console);
 console.reportErrorsAsExceptions = false;
