@@ -1,4 +1,4 @@
-# Comp4920--FooD
+# FooD
 
 Figma link (wireframe):
 https://www.figma.com/file/w5KqwkUh6mEzhSa5mvX5SA/Foo-D
