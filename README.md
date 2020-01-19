@@ -17,7 +17,9 @@ Task to be done
 
 0. Monica add the catch to ur run out of point of api
 1. Add catch to API when run out of point or lose Internet + Test AWS when Internet gone
-   2：The user profile page Carter
-   3: Sharing UI Carter
-   4: Like heart Monica Not done
-   LOGOUT
+   1. The user profile page Carter
+   1. Sharing UI Carter
+   1. Like heart Monica - Done. TODO: extend to share page.
+   
+![GitHub Logo](assets/images/african.jpg)
+Format: ![Alt Text](url)
