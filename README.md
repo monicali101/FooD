@@ -21,7 +21,7 @@ Task to be done
    1. Sharing UI Carter
    1. Like heart Monica - Done. TODO: extend to share page.
    
-![](https://github.com/monicali101/FooD/blob/master/assets/images/8.jpg | width=100)
+![Login](assets/images/8.jpg)
 
 ![Login](assets/images/7.jpg)
 
