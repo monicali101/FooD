@@ -13,30 +13,35 @@ a4984101b27a4e2ab2c321a89bc1202d (7th acct)
 a519625ee78e4bffa85a23b26650447b
 5d07d03e9a8045a9b9fe28b2f2bd6294
 
-Task to be done
+#### Task to be done
 
 1. Monica add the catch to ur run out of point of api
-2. Add catch to API when run out of point or lose Internet + Test AWS when Internet gone
-   1. The user profile page Carter
-   1. Sharing UI Carter
+2. Add catch to API when run out of point 
+   1. The user profile page Carter - need to expand?
    1. Like heart Monica - Done. TODO: extend to share page.
    
-   
+&nbsp;  
+### Login and Home page
+&nbsp;
+ 
 ![Login](assets/images/8.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/7.jpg)
 
 
 &nbsp;  
+### Menu Bar and Search page
 &nbsp;
 
 ![Login](assets/images/6.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/5.jpg)
 
-&nbsp;  
+&nbsp; 
+### Favourites and Share page
 &nbsp;
 
 
 ![Login](assets/images/4.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/3.jpg)
 
 &nbsp;  
+### Restaurant and Settings -> Change Preferences page
 &nbsp;
 
 
