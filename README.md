@@ -26,6 +26,12 @@ a519625ee78e4bffa85a23b26650447b
  
 ![Login](assets/images/8.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/7.jpg)
 
+&nbsp;  
+### Recipe and Ingredients page
+&nbsp;
+ 
+![Login](assets/images/9.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/10.jpg)
+
 
 &nbsp;  
 ### Menu Bar and Search page
