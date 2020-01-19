@@ -21,18 +21,23 @@ Task to be done
    1. Sharing UI Carter
    1. Like heart Monica - Done. TODO: extend to share page.
    
-![Login](assets/images/8.jpg)
+   
+![Login](assets/images/8.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/7.jpg)
 
-![Login](assets/images/7.jpg)
 
-![Login](assets/images/6.jpg)
+&nbsp;  
+&nbsp;
 
-![Login](assets/images/5.jpg)
+![Login](assets/images/6.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/5.jpg)
 
-![Login](assets/images/4.jpg)
+&nbsp;  
+&nbsp;
 
-![Login](assets/images/3.jpg)
 
-![Login](assets/images/2.jpg)
+![Login](assets/images/4.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/3.jpg)
 
-![Login](assets/images/1.jpg)
+&nbsp;  
+&nbsp;
+
+
+![Login](assets/images/2.jpg)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![Login](assets/images/1.jpg)
