@@ -56,6 +56,14 @@ class MyDrawer extends React.Component {
             }}
           />
           <Btn
+            title="Simple Cook"
+            source={require("../../assets/icons/cook.png")}
+            onPress={() => {
+              navigation.navigate("SimpleCook");
+              navigation.closeDrawer();
+            }}
+          />
+          <Btn
             title="Favourites"
             source={require("../../assets/icons/heartI.png")}
             onPress={() => {

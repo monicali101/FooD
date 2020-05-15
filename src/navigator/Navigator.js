@@ -22,6 +22,7 @@ import receive_friend from "../screens/Share/receive_friend";
 import AccountDetail from "../screens//Setting/AccountDetail";
 import GoogleMap from "../screens/Map/Map";
 import ClickRecommendation from "../screens/ClickRecommendation";
+import SimpleCookScreen from "../screens/SimpleCook";
 import LoginNavigator from "../../App";
 
 
@@ -32,6 +33,7 @@ const myNavigator = createStackNavigator(
     Recipe: MyRecipe,
     mysearch1: Mysearch1,
     mysearch2: Mysearch2,
+    SimpleCook: SimpleCookScreen,
     MyIngredient: MyIngred,
     Preferences: Preferences,
     Welcome: Welcomepage,
