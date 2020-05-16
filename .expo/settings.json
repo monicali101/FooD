@@ -1,6 +1,6 @@
 {
   "urlRandomness": "k4-i6m",
-  "hostType": "lan",
+  "hostType": "localhost",
   "lanType": "ip",
   "dev": true,
   "minify": false,

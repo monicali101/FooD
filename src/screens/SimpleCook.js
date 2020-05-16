@@ -20,7 +20,7 @@ import { StyleSheet } from "react-native";
 
 export default class SimpleCookScreen extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: "Favourites",
+    title: "Simple Cook",
     headerLeft: (
       <Img_menu
         onPress={() => {
@@ -339,6 +339,19 @@ export default class SimpleCookScreen extends Component {
               alignItems: "center" //Vertically,
             }}
           >
+            <Text
+              style={{
+                fontSize: 18,
+                textAlign: "left",
+                lineHeight: 30,
+                marginTop: 20,
+                marginBottom: 20,
+                marginLeft: 15
+              }}
+            >
+              Select the ingredients you have, and we'll find  meals you can cook!
+            </Text>
+
             <FlatList
               vertical
               showsVerticalScrollIndicator={false}
