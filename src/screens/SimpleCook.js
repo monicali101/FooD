@@ -33,112 +33,43 @@ export default class SimpleCookScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: [],
-      newResult: [],
-      value: "",
-      data: [],
-      cuisines: [],
-      numberLiked: 4,
-      likedFoods: [],
-      fav: [],
-      favSearch: [],
-      fontColour: "#FFFFFF",
-      ide: true
+      list: [],
     };
   }
 
-  queryString = id => {
-    //https://api.spoonacular.com/recipes/716429/information?includeNutrition=false
-    let baseStart = "https://api.spoonacular.com/recipes/";
-    let baseEnd = "/information?includeNutrition=false";
 
-    console.log("----- Calling queryString ----> ");
-
-    let foodID = this.state.likedFoods[id];
-    let key = GLOBAL.apiKey;
-    let query = baseStart + foodID + baseEnd + key;
-    console.log("---- Response from Spoon API query --->");
-    console.log(query);
-    return query;
-  };
-
-  query = () => {
+  listCategories = () => {
     this.scroll.scrollTo({ x: 0, y: 0, animated: true });
-    let i = 0;
-    this.setState({ result: [] });
-    if (
-      this.state.likedFoods.length < 1 ||
-      this.state.likedFoods[0] == "<empty>"
-    ) {
-      this.setState({ fontColour: "#000000" });
-    } else {
-      for (i = 0; i < this.state.likedFoods.length; i++) {
-        //iterate and pass index of liked list to queryString()
-        fetch(this.queryString(i), {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json"
-          }
-        })
-          .then(response => response.json())
-          .then(responseJson => {
-            //Name
+    let categories = ["Dairy", "Vegetable", "Fruits", "Baking & Grains", "Sweeteners", "Spices", "Meats", 
+    "Fish", "Seafood", "Condiments", "Oils", "Seasoning", "Sauces", "Legumes", "Alcohol",
+    "Nuts", "Dairy Alternatives", "Desserts & Snacks", "Beverages"];
 
-            let name = "";
-            let url = "";
-            let foodID = "";
-            let type = "";
-            console.log("error here", responseJson);
-            foodID = JSON.stringify(responseJson.id);
-
-            name = JSON.stringify(responseJson.title);
-            name = name.substring(1, name.length - 1);
-
-            if (responseJson.image != null) {
-              type = responseJson.image.toString();
-              type = type.substring(type.length - 3, type.length);
-            } else {
-              type = "jpg";
-            }
-
-            url =
-              "https://spoonacular.com/recipeImages/" +
-              foodID +
-              "-480x360." +
-              type;
-
-            this.setState(prevState => ({
-              fontColour: "#FFFFFF",
-              result: [
-                ...prevState.result,
-                {
-                  id: foodID,
-                  title: name,
-                  pictureURL: url,
-                  likeIcon: require("../../assets/icons/delete.png")
-                }
-              ]
-            }));
-            console.log("aAAAAAAAAAAAAAAAA", this.state.result);
-          })
-          .catch(error => {
-            console.error(error);
-          });
+    for (i = 0; i < 19; i++) {
+      let categoryName = categories[i];
+      let ingredientsList = ["blahhh"];
+      if (i == 0) {
+        ingredientsList = ["butter ", "egg ", "milk ", "parmesan "];
+      } else if (i == 1) {
+        ingredientsList = ["onion ", "garlic ", "tomato ", "potato "];
+      } else {
+        ingredientsList = ["blah"];
       }
+
+      this.setState(prevState => ({
+        list: [
+          ...prevState.list,
+          {
+            category: categoryName,
+            ingredients: ingredientsList,
+          }
+        ]
+      }));
     }
   };
 
   componentDidMount = () => {
     //match sure API is called again when returned from Preferences survey
-    this.focusListener = this.props.navigation.addListener("didFocus", () => {
-      this.createUser()
-        .then(response => {
-          this.fetchUserLikes().then(userPref => {
-            this.query();
-          });
-        })
-        .catch(err => console.log(err));
-    });
+    this.listCategories();
   };
 
   componentWillUnmount() {
@@ -163,81 +94,7 @@ export default class SimpleCookScreen extends Component {
     return cognitoUser; //return a promise
   }
 
-  fetchUserLikes() {
-    console.log("Getting preferences for userId: ", this.state.userId);
-
-    var userPref = API.graphql(
-      graphqlOperation(getUser, { id: this.state.userId })
-    ).then(response => {
-      //Remove duplicates
-      let Fav = response.data.getUser["favourites"].concat();
-      let Fav2 = response.data.getUser["favouriteSearch"].concat();
-      console.log("favouritesSearch: ", Fav2);
-      console.log("favourites: ", Fav);
-      //Concatenate the two arrays
-      if (Fav[0] == "<empty>") {
-        Fav = [];
-      }
-
-      if (Fav2[0] == "<empty>") {
-        Fav2 = [];
-      }
-
-      let finalFav = Fav.concat(Fav2);
-      let i,
-        j = 0;
-      for (i = 0; i < finalFav.length; ++i) {
-        for (j = i + 1; j < finalFav.length; ++j) {
-          if (finalFav[i] === finalFav[j]) {
-            finalFav.splice(j--, 1);
-          }
-        }
-      }
-      console.log("concat favs ", finalFav);
-      this.setState({
-        likedFoods: finalFav,
-        fav: Fav,
-        favSearch: Fav2,
-        ide: false
-      });
-    });
-
-    return userPref;
-  }
-
-  updateFavourites = () => {
-    var myArray = this.state.fav;
-    for (var item in this.state.fav) {
-      myArray[item] = this.state.fav[item];
-    }
-    var myArray2 = this.state.favSearch;
-    for (var item in this.state.favSearch) {
-      myArray2[item] = this.state.favSearch[item];
-    }
-
-    var cognitoUser = Auth.currentUserInfo()
-      .then(user => {
-        console.log("user: ", user);
-        var record = {
-          id: user.attributes.sub,
-          favourites: myArray,
-          favouriteSearch: myArray2
-        };
-
-        console.log("-----updated user record ----> ", record);
-
-        var newUser = API.graphql(
-          graphqlOperation(updateUser, { input: record })
-        ).then(response => {
-          console.log("updated record: ", response);
-        });
-      })
-
-      .catch(err => console.log(err));
-    this.query();
-  };
-
-  onPressFood = item => {
+  onPressCategory = item => {
     this.saveUserClick(item).then(() => {
       this.props.navigation.navigate("Recipe", { item });
     });
@@ -258,76 +115,21 @@ export default class SimpleCookScreen extends Component {
     return savedClick;
   }
 
-  ////////////////////////Change Like ////////////////////////
-
-  changeLike = id => {
-    let i = 0;
-    let likesShown = this.state.likedFoods;
-    let likeList = this.state.fav;
-    let likeListSearch = this.state.favSearch;
-    //Match user tap with proper food (fetch returns out of order)
-    //Remove ID from list of liked foods
-    for (i = 0; i < this.state.likedFoods.length; i++) {
-      if (this.state.likedFoods[i] == id) {
-        likesShown.splice(i, 1);
-        break;
-      }
-    }
-
-    //remove from fav array if deleting
-    for (i = 0; i < this.state.fav.length; i++) {
-      if (this.state.fav[i] == id) {
-        likeList.splice(i, 1);
-        break;
-      }
-    }
-    //remove from favSearch array if deleting
-    for (i = 0; i < this.state.favSearch.length; i++) {
-      if (this.state.favSearch[i] == id) {
-        likeListSearch.splice(i, 1);
-        break;
-      }
-    }
-
-    this.setState({
-      likedFoods: likesShown,
-      fav: likeList,
-      favSearch: likeListSearch
-    });
-    this.updateFavourites();
-  };
-
-  renderFood = ({ item }) => (
+  renderCategories = ({ item }) => (
     <TouchableHighlight
       underlayColor="#FFFFFF"
       onPress={() => this.onPressFood(item)}
     >
-      <View style={styles.foodView}>
-        <Image style={styles.foodPhoto} source={{ uri: item.pictureURL }} />
-        <Text style={styles.foodName}>{item.title}</Text>
+      <View style={styles.categoryView}>
+        <Text style={styles.foodName}>{item.category}</Text>
         <Text style={styles.spacing}> </Text>
-        <TouchableHighlight
-          style={styles.iconPressArea}
-          underlayColor="#FFFFFF"
-          onPress={() => this.changeLike(item.id)}
-        >
-          <Image style={styles.icon} source={item.likeIcon} />
-        </TouchableHighlight>
+        <Text style={styles.foodName}>{item.ingredients}</Text>
         <Text style={styles.spacing}> </Text>
       </View>
     </TouchableHighlight>
   );
 
   render() {
-    if (this.state.ide) {
-      return (
-        <View
-          style={{ flex: 1, alignItems: "center", justifyContent: "center" }}
-        >
-          <ActivityIndicator />
-        </View>
-      );
-    } else {
       return (
         <ScrollView
           ref={c => {
@@ -349,15 +151,15 @@ export default class SimpleCookScreen extends Component {
                 marginLeft: 15
               }}
             >
-              Select the ingredients you have, and we'll find  meals you can cook!
+              Select the ingredients you have, and we'll find meals you can cook!
             </Text>
 
             <FlatList
               vertical
               showsVerticalScrollIndicator={false}
               numColumns={1}
-              data={this.state.result}
-              renderItem={this.renderFood}
+              data={this.state.list}
+              renderItem={this.renderCategories}
             />
           </View>
 
@@ -373,23 +175,13 @@ export default class SimpleCookScreen extends Component {
           >
             No foods saved in Favourites :(
           </Text>
-          <Text
-            style={{
-              fontSize: 15,
-              color: this.state.fontColour,
-              textAlign: "center"
-            }}
-          >
-            Not to worry! You can add them through Home or Search.
-          </Text>
         </ScrollView>
       );
-    }
   }
 }
 
 const styles = StyleSheet.create({
-  foodView: {
+  categoryView: {
     flexDirection: "column",
     flex: 1,
     height: 313,
