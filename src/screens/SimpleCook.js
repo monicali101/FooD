@@ -12,7 +12,7 @@ import {
 
 import Img_menu from "../Button/Img_menu";
 import GLOBAL from "../../globals";
-
+import update from "immutability-helper";
 import { getUser } from "../graphql/queries.js";
 import { updateUser, createUserClick } from "../graphql/mutations.js";
 import { Auth, API, graphqlOperation } from "aws-amplify";
@@ -34,6 +34,7 @@ export default class SimpleCookScreen extends Component {
     super(props);
     this.state = {
       list: [],
+      ingredientsButtonColour: "#5cb42E"
     };
   }
 
@@ -61,6 +62,7 @@ export default class SimpleCookScreen extends Component {
           {
             category: categoryName,
             ingredients: ingredientsList,
+
           }
         ]
       }));
@@ -94,11 +96,27 @@ export default class SimpleCookScreen extends Component {
     return cognitoUser; //return a promise
   }
 
-  onPressCategory = item => {
-    this.saveUserClick(item).then(() => {
-      this.props.navigation.navigate("Recipe", { item });
-    });
+  toggle = ({item}) => {
+    console.log("toggleddddd");
+    if (this.state.ingredientsButtonColour == "#5cb42E") {
+      console.log("lmao");
+      this.setState({
+        ingredientsButtonColour: update(this.state.ingredientsButtonColour, { $set: "#CCCCCC" }),
+      });
+    } else if (this.state.ingredientsButtonColour == "#CCCCCC") {
+      console.log("kill me");
+      this.setState({
+        ingredientsButtonColour: update(this.state.ingredientsButtonColour, { $set: "#5cb42E" }),
+      });
+    }
+    console.log("Button colour ", this.state.ingredientsButtonColour);
+    this.updateList();
   };
+
+  updateList = () => {
+    var colour = this.state.ingredientsButtonColour;
+    console.log("Button colour ", this.state.ingredientsButtonColour);
+  }
 
   //////////////////////// Save clicks to AWS ///////////////////////////////
   saveUserClick(item) {
@@ -115,6 +133,8 @@ export default class SimpleCookScreen extends Component {
     return savedClick;
   }
 
+
+
   renderCategories = ({ item }) => (
 
     <View style={styles.categoryView}>
@@ -129,16 +149,25 @@ export default class SimpleCookScreen extends Component {
     </View>
   );
 
-  renderIngredients = ({ item }) => (
-    <TouchableHighlight
-      style={styles.ingredients}
-      underlayColor="#FFFFFF"
-      onPress={() => this.onPressFood(item)}
-    >
-        <Text>{item}</Text>
+  // renderIngredients = ({ item }) => (
+  //   <TouchableHighlight
+  //     style={{
+  //       alignItems: "center",
+  //       backgroundColor: this.state.ingredientsButtonColour,
+  //       padding: 8,
+  //       borderColor: "#cccccc",
+  //       borderWidth: 1.5,
+  //       borderRadius: 10,
+  //       margin: 6,
+  //     }}
+  //     underlayColor="#FFFFFF"
+  //     onPress={() => {this.toggle(item)}}
+  //   >
+  //   <Text>{item}</Text>
 
-    </TouchableHighlight>
-  );
+  //   </TouchableHighlight>
+  // );
+
 
   render() {
       return (
@@ -159,7 +188,8 @@ export default class SimpleCookScreen extends Component {
                 lineHeight: 30,
                 marginTop: 20,
                 marginBottom: 20,
-                marginLeft: 15
+                marginLeft: 15,
+                color: this.state.ingredientsButtonColour
               }}
             >
               Select the ingredients you have, and we'll find meals you can cook!
@@ -170,22 +200,30 @@ export default class SimpleCookScreen extends Component {
               showsVerticalScrollIndicator={false}
               numColumns={1}
               data={this.state.list}
-              renderItem={this.renderCategories}
+              renderItem={({item})=>(
+                <View style={styles.categoryView}>
+                <Text style={styles.categoryName}>{item.category}</Text>
+                <FlatList
+                  numColumns={5}
+                  horizontal={false}
+                  showsVerticalScrollIndicator={false}
+                  data={item.ingredients}
+                  renderItem={({item})=>(
+                    <TouchableHighlight
+                    style={[styles.ingredients, {backgroundColor: this.state.ingredientsButtonColour}]}
+                    // underlayColor="#FFFFFF"
+                    onPress={() => this.toggle(item)}
+                  >
+                  <Text>{item}</Text>
+              
+                  </TouchableHighlight>
+                )}
+                />
+                </View>
+              )}
             />
           </View>
 
-          <Text
-            style={{
-              fontSize: 18,
-              fontWeight: "bold",
-              paddingBottom: 20,
-              paddingTop: 20,
-              color: this.state.fontColour,
-              textAlign: "center"
-            }}
-          >
-            No foods saved in Favourites :(
-          </Text>
         </ScrollView>
       );
   }
@@ -194,9 +232,9 @@ export default class SimpleCookScreen extends Component {
 const styles = StyleSheet.create({
   ingredients: {
     alignItems: "center",
-    backgroundColor: "#DDDDDD",
     padding: 8,
     borderColor: "#cccccc",
+   
     borderWidth: 1.5,
     borderRadius: 10,
     margin: 6,
