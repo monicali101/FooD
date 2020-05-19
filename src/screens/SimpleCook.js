@@ -48,7 +48,7 @@ export default class SimpleCookScreen extends Component {
       let categoryName = categories[i];
       let ingredientsList = ["blahhh"];
       if (i == 0) {
-        ingredientsList = ["butter ", "egg ", "milk ", "parmesan "];
+        ingredientsList = ["butter", "egg", "milk", "parmesan", "butter", "egg", "milk", "parmesan", "butter", "egg ", "milk ", "parmesan "];
       } else if (i == 1) {
         ingredientsList = ["onion ", "garlic ", "tomato ", "potato "];
       } else {
@@ -116,16 +116,27 @@ export default class SimpleCookScreen extends Component {
   }
 
   renderCategories = ({ item }) => (
+
+    <View style={styles.categoryView}>
+      <Text style={styles.categoryName}>{item.category}</Text>
+      <FlatList
+          numColumns={5}
+          horizontal={false}
+          showsVerticalScrollIndicator={false}
+          data={item.ingredients}
+          renderItem={this.renderIngredients}
+      />
+    </View>
+  );
+
+  renderIngredients = ({ item }) => (
     <TouchableHighlight
+      style={styles.ingredients}
       underlayColor="#FFFFFF"
       onPress={() => this.onPressFood(item)}
     >
-      <View style={styles.categoryView}>
-        <Text style={styles.foodName}>{item.category}</Text>
-        <Text style={styles.spacing}> </Text>
-        <Text style={styles.foodName}>{item.ingredients}</Text>
-        <Text style={styles.spacing}> </Text>
-      </View>
+        <Text>{item}</Text>
+
     </TouchableHighlight>
   );
 
@@ -181,6 +192,15 @@ export default class SimpleCookScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  ingredients: {
+    alignItems: "center",
+    backgroundColor: "#DDDDDD",
+    padding: 8,
+    borderColor: "#cccccc",
+    borderWidth: 1.5,
+    borderRadius: 10,
+    margin: 6,
+  },
   categoryView: {
     flexDirection: "column",
     flex: 1,
@@ -213,10 +233,10 @@ const styles = StyleSheet.create({
     shadowRadius: 5
   },
 
-  foodName: {
+  categoryName: {
     flexDirection: "column",
     flex: 1,
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: "bold",
     color: "#333333",
     textAlign: "center",
