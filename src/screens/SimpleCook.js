@@ -144,29 +144,30 @@ export default class SimpleCookScreen extends Component {
           horizontal={false}
           showsVerticalScrollIndicator={false}
           data={item.ingredients}
+          extraData={this.state.ingredientsButtonColour}
           renderItem={this.renderIngredients}
       />
     </View>
   );
 
-  // renderIngredients = ({ item }) => (
-  //   <TouchableHighlight
-  //     style={{
-  //       alignItems: "center",
-  //       backgroundColor: this.state.ingredientsButtonColour,
-  //       padding: 8,
-  //       borderColor: "#cccccc",
-  //       borderWidth: 1.5,
-  //       borderRadius: 10,
-  //       margin: 6,
-  //     }}
-  //     underlayColor="#FFFFFF"
-  //     onPress={() => {this.toggle(item)}}
-  //   >
-  //   <Text>{item}</Text>
+  renderIngredients = ({ item }) => (
+    <TouchableHighlight
+      style={{
+        alignItems: "center",
+        backgroundColor: this.state.ingredientsButtonColour,
+        padding: 8,
+        borderColor: "#cccccc",
+        borderWidth: 1.5,
+        borderRadius: 10,
+        margin: 6,
+      }}
+      underlayColor="#FFFFFF"
+      onPress={() => {this.toggle(item)}}
+    >
+    <Text>{item}</Text>
 
-  //   </TouchableHighlight>
-  // );
+    </TouchableHighlight>
+  );
 
 
   render() {
@@ -189,7 +190,6 @@ export default class SimpleCookScreen extends Component {
                 marginTop: 20,
                 marginBottom: 20,
                 marginLeft: 15,
-                color: this.state.ingredientsButtonColour
               }}
             >
               Select the ingredients you have, and we'll find meals you can cook!
@@ -200,27 +200,8 @@ export default class SimpleCookScreen extends Component {
               showsVerticalScrollIndicator={false}
               numColumns={1}
               data={this.state.list}
-              renderItem={({item})=>(
-                <View style={styles.categoryView}>
-                <Text style={styles.categoryName}>{item.category}</Text>
-                <FlatList
-                  numColumns={5}
-                  horizontal={false}
-                  showsVerticalScrollIndicator={false}
-                  data={item.ingredients}
-                  renderItem={({item})=>(
-                    <TouchableHighlight
-                    style={[styles.ingredients, {backgroundColor: this.state.ingredientsButtonColour}]}
-                    // underlayColor="#FFFFFF"
-                    onPress={() => this.toggle(item)}
-                  >
-                  <Text>{item}</Text>
-              
-                  </TouchableHighlight>
-                )}
-                />
-                </View>
-              )}
+              extraData={this.state.ingredientsButtonColour} //tells flatlist to listen to state change for ingredientsButtonColour
+              renderItem={this.renderCategories}
             />
           </View>
 
