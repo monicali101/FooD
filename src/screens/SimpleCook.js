@@ -34,13 +34,15 @@ export default class SimpleCookScreen extends Component {
     super(props);
     this.state = {
       list: [],
-      ingredientsButtonColour: "#5cb42E"
+      ingredientsButtonColour: "#f5f5f5",
+      ingredientsButtonTextColour: "#8f8f8f"
     };
   }
 
 
   listCategories = () => {
     this.scroll.scrollTo({ x: 0, y: 0, animated: true });
+    let buttonColourOg = "#8f8f8f";
     let categories = ["Dairy", "Vegetable", "Fruits", "Baking & Grains", "Sweeteners", "Spices", "Meats", 
     "Fish", "Seafood", "Condiments", "Oils", "Seasoning", "Sauces", "Legumes", "Alcohol",
     "Nuts", "Dairy Alternatives", "Desserts & Snacks", "Beverages"];
@@ -62,7 +64,7 @@ export default class SimpleCookScreen extends Component {
           {
             category: categoryName,
             ingredients: ingredientsList,
-
+            buttonColour: buttonColourOg
           }
         ]
       }));
@@ -98,15 +100,17 @@ export default class SimpleCookScreen extends Component {
 
   toggle = ({item}) => {
     console.log("toggleddddd");
-    if (this.state.ingredientsButtonColour == "#5cb42E") {
+    if (this.state.ingredientsButtonColour == "#94d881") { //green. if selected, unselect
       console.log("lmao");
       this.setState({
-        ingredientsButtonColour: update(this.state.ingredientsButtonColour, { $set: "#CCCCCC" }),
+        ingredientsButtonColour: update(this.state.ingredientsButtonColour, { $set: "#f5f5f5" }), // light grey
+        ingredientsButtonTextColour: update(this.state.ingredientsButtonTextColour, { $set: "#8f8f8f" }), //dark grey
       });
-    } else if (this.state.ingredientsButtonColour == "#CCCCCC") {
+    } else  { //select
       console.log("kill me");
       this.setState({
-        ingredientsButtonColour: update(this.state.ingredientsButtonColour, { $set: "#5cb42E" }),
+        ingredientsButtonColour: update(this.state.ingredientsButtonColour, { $set: "#94d881" }), //green
+        ingredientsButtonTextColour: update(this.state.ingredientsButtonTextColour, { $set: "#ffffff" }), //white
       });
     }
     console.log("Button colour ", this.state.ingredientsButtonColour);
@@ -144,7 +148,8 @@ export default class SimpleCookScreen extends Component {
           horizontal={false}
           showsVerticalScrollIndicator={false}
           data={item.ingredients}
-          extraData={this.state.ingredientsButtonColour}
+          //tells flatlist to listen to state change for ingredientsButtonColour
+          extraData={this.state.ingredientsButtonColour, this.state.ingredientsButtonTextColour}
           renderItem={this.renderIngredients}
       />
     </View>
@@ -156,15 +161,13 @@ export default class SimpleCookScreen extends Component {
         alignItems: "center",
         backgroundColor: this.state.ingredientsButtonColour,
         padding: 8,
-        borderColor: "#cccccc",
-        borderWidth: 1.5,
-        borderRadius: 10,
-        margin: 6,
+        borderRadius: 6,
+        margin: 5,
       }}
       underlayColor="#FFFFFF"
       onPress={() => {this.toggle(item)}}
     >
-    <Text>{item}</Text>
+    <Text style = {{color: this.state.ingredientsButtonTextColour}}>{item}</Text>
 
     </TouchableHighlight>
   );
@@ -200,7 +203,8 @@ export default class SimpleCookScreen extends Component {
               showsVerticalScrollIndicator={false}
               numColumns={1}
               data={this.state.list}
-              extraData={this.state.ingredientsButtonColour} //tells flatlist to listen to state change for ingredientsButtonColour
+              //tells flatlist to listen to state change for ingredientsButtonColour
+              extraData={this.state.ingredientsButtonColour, this.state.ingredientsButtonTextColour}
               renderItem={this.renderCategories}
             />
           </View>
@@ -214,9 +218,6 @@ const styles = StyleSheet.create({
   ingredients: {
     alignItems: "center",
     padding: 8,
-    borderColor: "#cccccc",
-   
-    borderWidth: 1.5,
     borderRadius: 10,
     margin: 6,
   },
