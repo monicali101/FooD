@@ -42,7 +42,7 @@ export default class SimpleCookScreen extends Component {
 
   listCategories = () => {
     this.scroll.scrollTo({ x: 0, y: 0, animated: true });
-    let buttonColourOg = "#8f8f8f";
+    let buttonColourArray = [];
     let categories = ["Dairy", "Vegetable", "Fruits", "Baking & Grains", "Sweeteners", "Spices", "Meats", 
     "Fish", "Seafood", "Condiments", "Oils", "Seasoning", "Sauces", "Legumes", "Alcohol",
     "Nuts", "Dairy Alternatives", "Desserts & Snacks", "Beverages"];
@@ -58,13 +58,16 @@ export default class SimpleCookScreen extends Component {
         ingredientsList = ["blah"];
       }
 
+      for (j = 0; j<ingredientsList.length; j++)
+        buttonColourArray[j] = "#f5f5f5";  //default button not selected
+
       this.setState(prevState => ({
         list: [
           ...prevState.list,
           {
             category: categoryName,
             ingredients: ingredientsList,
-            buttonColour: buttonColourOg
+            buttonColour: buttonColourArray
           }
         ]
       }));
@@ -98,16 +101,49 @@ export default class SimpleCookScreen extends Component {
     return cognitoUser; //return a promise
   }
 
-  toggle = ({item}) => {
-    console.log("toggleddddd");
+  toggle = (item) => {
+    let ingredient = item;
+    let categoryIndex = -1;
+    let ingredientIndex = -1;
+    //Find index of category the ingredient is in
+    for (i = 0; i < 19; i++) {
+      let ingredientsArray = this.state.list[i].ingredients;
+      
+      if (ingredientsArray.indexOf(item) != -1){
+        //Get index of ingredient within that category
+        ingredientIndex = ingredientsArray.indexOf(item);
+        categoryIndex = i;
+        break;
+      }
+    }
+
+    //Update BACKGROUND button colour
+    if (this.state.list[categoryIndex].buttonColour[ingredientIndex] == "#f5f5f5"){ //light grey
+      this.setState({
+        list: update(this.state.list, {
+          [categoryIndex]: {
+            buttonColour: { $set: "#94d881" }
+          }
+        }),
+      });
+    } else {
+      this.setState({
+        list: update(this.state.list, {
+          [categoryIndex]: {
+            buttonColour: { $set: "#f5f5f5" }
+          }
+        }),
+      });
+    }
+
+    console.log(categoryIndex);
+    //console.log(ingredientsArray.findIndex(index));
     if (this.state.ingredientsButtonColour == "#94d881") { //green. if selected, unselect
-      console.log("lmao");
       this.setState({
         ingredientsButtonColour: update(this.state.ingredientsButtonColour, { $set: "#f5f5f5" }), // light grey
         ingredientsButtonTextColour: update(this.state.ingredientsButtonTextColour, { $set: "#8f8f8f" }), //dark grey
       });
     } else  { //select
-      console.log("kill me");
       this.setState({
         ingredientsButtonColour: update(this.state.ingredientsButtonColour, { $set: "#94d881" }), //green
         ingredientsButtonTextColour: update(this.state.ingredientsButtonTextColour, { $set: "#ffffff" }), //white
@@ -139,10 +175,11 @@ export default class SimpleCookScreen extends Component {
 
 
 
-  renderCategories = ({ item }) => (
+  renderCategories = (item, index1) => (
 
     <View style={styles.categoryView}>
       <Text style={styles.categoryName}>{item.category}</Text>
+      <Text style={styles.categoryName}>{index1}</Text>
       <FlatList
           numColumns={5}
           horizontal={false}
@@ -150,12 +187,12 @@ export default class SimpleCookScreen extends Component {
           data={item.ingredients}
           //tells flatlist to listen to state change for ingredientsButtonColour
           extraData={this.state.ingredientsButtonColour, this.state.ingredientsButtonTextColour}
-          renderItem={this.renderIngredients}
+          renderItem={({item, index, index1}) => this.renderIngredients(item, index, index1)}
       />
     </View>
   );
 
-  renderIngredients = ({ item }) => (
+  renderIngredients = (item, indexCat, indexIng) => (
     <TouchableHighlight
       style={{
         alignItems: "center",
@@ -167,7 +204,7 @@ export default class SimpleCookScreen extends Component {
       underlayColor="#FFFFFF"
       onPress={() => {this.toggle(item)}}
     >
-    <Text style = {{color: this.state.ingredientsButtonTextColour}}>{item}</Text>
+    <Text style = {{color: this.state.ingredientsButtonTextColour}}>{indexCat}</Text>
 
     </TouchableHighlight>
   );
@@ -205,7 +242,7 @@ export default class SimpleCookScreen extends Component {
               data={this.state.list}
               //tells flatlist to listen to state change for ingredientsButtonColour
               extraData={this.state.ingredientsButtonColour, this.state.ingredientsButtonTextColour}
-              renderItem={this.renderCategories}
+              renderItem={({item, index}) => this.renderCategories(item, index)}
             />
           </View>
 
@@ -224,7 +261,7 @@ const styles = StyleSheet.create({
   categoryView: {
     flexDirection: "column",
     flex: 1,
-    height: 313,
+    //height: 313,
     width: 340,
     borderColor: "#cccccc",
     borderWidth: 0.5,
