@@ -52,7 +52,11 @@ export default class SimpleCookScreen extends Component {
       let categoryName = categories[i];
       let ingredientsList = ["blahhh"];
       if (i == 0) {
-        ingredientsList = ["butter", "egg", "milk", "parmesan", "butter", "egg", "milk", "parmesan", "butter", "egg ", "milk ", "parmesan "];
+        ingredientsList = ["butter", "egg", "milk", "parmesan", "cheddar", "american cheese", "sour cream", 
+                           "cream cheese", "mozarella", "yogurt ", "cream ", "feta", "whipped cream", "condensed milk",
+                           "cottage cheese", "ice cream", "swiss cheese", "buttermilk", "ricotta", "provolone",
+                           "italian cheese", "soft cheese", "gouda", "romano", "brie", "ghee", "creme fraiche",
+                           "custard", "hard cheese", "mascarpone", "gloucester cheese"];
       } else if (i == 1) {
         ingredientsList = ["onion ", "garlic ", "tomato ", "potato "];
       } else {
