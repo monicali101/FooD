@@ -58,7 +58,19 @@ export default class SimpleCookScreen extends Component {
                            "italian cheese", "soft cheese", "gouda", "romano", "brie", "ghee", "creme fraiche",
                            "custard", "hard cheese", "mascarpone", "gloucester cheese"];
       } else if (i == 1) {
-        ingredientsList = ["onion ", "garlic ", "tomato ", "potato "];
+        ingredientsList = ["onion", "garlic", "tomato", "potato", "carrot", "bell pepper", "broccoli", "corn", "spinach",
+                           "mushroom", "green beans", "ginger", "chili pepper", "celery", "rosemary", "red onion", 
+                           "cucumber", "sweet potato", "pickle", "avocado", "zucchini", "cilantro", "olive", "asparagus",
+                           "cabbage", "cauliflower", "dill", "kale", "pumpkin", "squash", "mint", "scallion", "shallot",
+                           "sun dried tomato", "eggplant", "beet", "horseradish", "butternup squash", "leek", "caper",
+                           "brussels sprout", "artichoke heart", "artichoke", " kimchi", "chia seeds", "radish", 
+                           "sauerkraut", "sweet pepper", "arugula", "capsicum", "bok choy", "parsnip", "okra", "yam",
+                           "fennel", "turnip", "snow peas", "bean sprouts", "seaweed", "chard", "collard", "pimiento",
+                           "watercress", "tomatillo", "grape leaves", "rocket", "mustard greens", "bamboo shoot",
+                           "canned tomato", "rutabaga", "endive", "broccoli rabe", "jicama", "kohlrabi", "hearts of palm",
+                           "butternut", "celery root", "daikon", "radicchio", "porcini", "chinese broccoli", "cress",
+                           "jerusalem artichoke", " water chestnut", "dulse", "micro greens", "burdock", "chayote",
+                           "mixed vegetables", "portobello mushroom"];
       } else {
         ingredientsList = ["blah"];
       }
