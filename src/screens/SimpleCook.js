@@ -133,17 +133,6 @@ export default class SimpleCookScreen extends Component {
     let ingredient = item;
     let categoryIndex = indexCat;
     let ingredientIndex = indexIngr;
-    //Find index of category the ingredient is in
-    // for (i = 0; i < 19; i++) {
-    //   let ingredientsArray = this.state.list[i].ingredients;
-      
-    //   if (ingredientsArray.indexOf(item) != -1){
-    //     //Get index of ingredient within that category
-    //     ingredientIndex = ingredientsArray.indexOf(item);
-    //     categoryIndex = i;
-    //     break;
-    //   }
-    // }
 
     //Update button colour
     if (this.state.list[categoryIndex].buttonColour[ingredientIndex] == "#94d881") { //green
@@ -153,8 +142,9 @@ export default class SimpleCookScreen extends Component {
           [categoryIndex]: { 
             buttonColour:  {
               [ingredientIndex]: { $set: "#f5f5f5" },
-              //buttonTextColour: { $set: "#8f8f8f" }
-              
+            },
+            buttonTextColour:  {
+              [ingredientIndex]: { $set: "#8f8f8f" },
             }
           }
         }),
@@ -166,7 +156,9 @@ export default class SimpleCookScreen extends Component {
           [categoryIndex]: {
             buttonColour:  {
               [ingredientIndex]: { $set: "#94d881" },
-              
+            },
+            buttonTextColour:  {
+              [ingredientIndex]: { $set: "#ffffff" },
             }
             //buttonColour: { $set: "#94d881" },
             //buttonTextColour: { $set: "#ffffff" }
