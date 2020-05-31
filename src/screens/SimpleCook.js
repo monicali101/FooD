@@ -71,6 +71,14 @@ export default class SimpleCookScreen extends Component {
                            "butternut", "celery root", "daikon", "radicchio", "porcini", "chinese broccoli", "cress",
                            "jerusalem artichoke", " water chestnut", "dulse", "micro greens", "burdock", "chayote",
                            "mixed vegetables", "portobello mushroom"];
+      } else if (i == 2) {
+        ingredientsList = ["lemon", "apple", "banana", "lime", "strawberry", "orange", "pineapple", "blueberry",
+                           "raisin", "coconut", "grape", "peach", "raspberry", "cranberry", "mango", "pear", "blackberry", 
+                           "cherry", "date", "watermelon", "berries", "kiwi", "grapefruit", "mandarin", "craisins", 
+                           "cantaloupe", "plum", "apricot", "clementine", "prunes", "apple butter", "pomegranate", 
+                           "nectarine", "fig", "tangerine", "papya", "rhubarb", "saltanas", "plantain", "currant", 
+                           "passion fruit", "guava", "persimmons", "lychee", "lingonberry", "tangelos", "kumquat", 
+                           "boysenberry", "star fruit", "durian", "quince", "honeydew", "crabapples",];
       } else {
         ingredientsList = ["blah"];
       }
@@ -210,7 +218,13 @@ export default class SimpleCookScreen extends Component {
       <Text style={styles.categoryName}>{item.category}</Text>
       <Text style={styles.spacing}> </Text>
       <FlatList
-          numColumns={5}
+          columnWrapperStyle={{              
+            marginLeft: 15, 
+            marginRight: 15,
+            alignItems: "center", //Vertically,
+            flexWrap: "wrap"
+          }}
+          numColumns={95}
           horizontal={false}
           showsVerticalScrollIndicator={false}
           data={item.ingredients}
@@ -248,7 +262,9 @@ export default class SimpleCookScreen extends Component {
         >
           <View
             style={{
-              alignItems: "center" //Vertically,
+
+              alignItems: "center", //Vertically,
+              flexWrap: "wrap"
             }}
           >
             <Text
