@@ -79,6 +79,20 @@ export default class SimpleCookScreen extends Component {
                            "nectarine", "fig", "tangerine", "papya", "rhubarb", "saltanas", "plantain", "currant", 
                            "passion fruit", "guava", "persimmons", "lychee", "lingonberry", "tangelos", "kumquat", 
                            "boysenberry", "star fruit", "durian", "quince", "honeydew", "crabapples",];
+      } else if (i==3) {
+        ingredientsList = ["rice", "pasta", "flour", "bread", "baking powder", "baking soda", "bread crumbs", 
+                           "cornstarch", "cocoa", "wild rice", "rolled oats", "noodle", "rice noodles", "flour tortillas",
+                           "pancake mix", "yeast", "cracker", "quinoa", "brown rice", "cornmeal", "self rising flour",
+                           "saltines", "popcorn", "corn tortillas", "ramen", "cereal", "biscuits", "couscous",
+                           "pie crust", "pie crust", "chips", "coconut flake", "bread flour", "croutons", "lasagne",
+                           "pizza dough", "bagel", "puff pastry", "barley", "bun", "multigrain bread", "potato flakes",
+                           "pretzel", "cornbread", "cornflour", "crescent roll dough", "cream of wheat", "coconut flour",
+                           "pita", "risotto", "bicarbonate soda", "ravioli", "wheat", "rice flour", "polenta", 
+                           "baguette", "gnocchi", "vermicelli", "semolina", "wheat germ", "buckwheat", "croissants",
+                           "bread dough", "filo dough", "yeast flake", "pierogi", "matzo meal", "rye", "tapioca flour",
+                           "shortcrust pastry", "potato starch", "breadsticks", "ciabatta", "spelt", "tapioca starch",
+                           "starch", "whole wheat flour", "gram flour", "sourdough starter", "wafer", "bran", "challah",
+                           "malt extract", "sorghum flour"];
       } else {
         ingredientsList = ["blah"];
       }
