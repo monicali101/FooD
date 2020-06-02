@@ -93,6 +93,9 @@ export default class SimpleCookScreen extends Component {
                            "shortcrust pastry", "potato starch", "breadsticks", "ciabatta", "spelt", "tapioca starch",
                            "starch", "whole wheat flour", "gram flour", "sourdough starter", "wafer", "bran", "challah",
                            "malt extract", "sorghum flour"];
+      } else if (i==4) {
+        ingredientsList = ["sugar", "brown sugar", "honey", "confectioners sugar", "maple syrup", "corn syrup", 
+                           "molasses", "artificial sweetener", "agave nectar", "coconut sugar"];
       } else {
         ingredientsList = ["blah"];
       }
