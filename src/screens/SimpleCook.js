@@ -96,6 +96,16 @@ export default class SimpleCookScreen extends Component {
       } else if (i==4) {
         ingredientsList = ["sugar", "brown sugar", "honey", "confectioners sugar", "maple syrup", "corn syrup", 
                            "molasses", "artificial sweetener", "agave nectar", "coconut sugar"];
+      } else if (i==5) {
+        ingredientsList = ["cinnamon", "vanilla", "garlic powder", "paprika", "oregano", "chili powder", "cumin", 
+                           "red pepper flake", "cayenne", "italian seasoning", "thyme", "onion powder", "nutmeg",
+                           "ground nutmeg", "curry powder", "bay leaf", "taco seasoning", "sage", "clove", "allspice",
+                           "turmeric", "sumac", "chive", "peppercorn", "ground coriander", "cajun", "coriander",
+                           "celery salt", "vanilla essence", "herbs", "steak seasoning", "pultry seasoning", "cardamom",
+                           "chile powder", "italian herbs", "tarragon", "garam masala", "marjoram", "mustard seed",
+                           "celery seed", "chinese five spice", "italian spice", "saffron", "onion flake", "chipotle",
+                           "herbes de provence", "dill seed", "fennel seed", "caraway", "cacao", "star anise", "savory",
+                           "chili paste", "tamarind", "aniseed", "fenugreek", "lavendar", "old bay seasoning", "lemon balm",];
       } else {
         ingredientsList = ["blah"];
       }
