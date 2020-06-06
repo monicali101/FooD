@@ -106,6 +106,17 @@ export default class SimpleCookScreen extends Component {
                            "celery seed", "chinese five spice", "italian spice", "saffron", "onion flake", "chipotle",
                            "herbes de provence", "dill seed", "fennel seed", "caraway", "cacao", "star anise", "savory",
                            "chili paste", "tamarind", "aniseed", "fenugreek", "lavendar", "old bay seasoning", "lemon balm",];
+      } else if (i==6) {
+        ingredientsList = ["chicken breast", "ground beef", "bacon", "sausage", "beef steak", "ham", "hot dog", 
+                            "pork chops", "chickeen thighs", "ground turkey", "turkey", "pepperoni", "whole chicken",
+                            "chicken leg", "ground pork", "chorizo", "chicken wings", "beef roast", "polish sausage", "salami",
+                            "turmeric", "sumac", "chive", "peppercorn", "ground coriander", "cajun", "coriander",
+                            "celery salt", "vanilla essence", "herbs", "steak seasoning", "pultry seasoning", "cardamom",
+                            "chile powder", "italian herbs", "tarragon", "garam masala", "marjoram", "mustard seed",
+                            "celery seed", "chinese five spice", "italian spice", "saffron", "onion flake", "chipotle",
+                            "herbes de provence", "dill seed", "fennel seed", "caraway", "cacao", "star anise", "savory",
+                            "chili paste", "tamarind", "aniseed", "fenugreek", "lavendar", "old bay seasoning", "lemon balm",];
+          
       } else {
         ingredientsList = ["blah"];
       }
