@@ -110,12 +110,15 @@ export default class SimpleCookScreen extends Component {
         ingredientsList = ["chicken breast", "ground beef", "bacon", "sausage", "beef steak", "ham", "hot dog", 
                             "pork chops", "chickeen thighs", "ground turkey", "turkey", "pepperoni", "whole chicken",
                             "chicken leg", "ground pork", "chorizo", "chicken wings", "beef roast", "polish sausage", "salami",
-                            "turmeric", "sumac", "chive", "peppercorn", "ground coriander", "cajun", "coriander",
-                            "celery salt", "vanilla essence", "herbs", "steak seasoning", "pultry seasoning", "cardamom",
-                            "chile powder", "italian herbs", "tarragon", "garam masala", "marjoram", "mustard seed",
-                            "celery seed", "chinese five spice", "italian spice", "saffron", "onion flake", "chipotle",
-                            "herbes de provence", "dill seed", "fennel seed", "caraway", "cacao", "star anise", "savory",
-                            "chili paste", "tamarind", "aniseed", "fenugreek", "lavendar", "old bay seasoning", "lemon balm",];
+                            "pork roast", "ground chicken", "pork ribs", "spam", "venison", "bologna", "bratwurst",
+                            "corned beef", "pork shoulder", "prosciutto", "chicken roast", "lamb chops", "pancetta",
+                            "ground lamb", "beef ribs", "duck", "pork belly", "beef liver", "leg of lamb", "canadian bacon",
+                            "beef shank", "veal", "chicken giblets", "cornish hen", "lamb shoulder", "lamb shank", "deer",
+                            "ground veal", "pastrami", "rabbit", "sliced turkey", "pork loin", "elk", "beef suet",
+                            "veal cutlet", "lamb loin", "marrow bones", "goose", "chicken tenders", "veal chops", "quail",
+                            "oxtail", "pheasant", "lamb libver", "pork liver", "veal shank", "foie gras", "beef sirloin",
+                            "liver sausage", "sweetbread", "wild boar", "snail", "pigeon", "duck liver", "goose liver",
+                            "grouse", "ostrich", "soppressata", "alligator"];
           
       } else {
         ingredientsList = ["blah"];
