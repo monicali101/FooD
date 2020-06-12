@@ -120,6 +120,13 @@ export default class SimpleCookScreen extends Component {
                             "liver sausage", "sweetbread", "wild boar", "snail", "pigeon", "duck liver", "goose liver",
                             "grouse", "ostrich", "soppressata", "alligator"];
           
+      } else if (i==7) {
+        ingredientsList = ["canned tuna", "salmon", "tilapia", "fish fillets", "cod", "anchovy", "smoked salmon", 
+                           "sardines", "tuna steak", "whitefish", "halibut", "trout", "haddock", "flounder", "catfish",
+                           "mahi mahi", "mackerel", "sole", "sea bass", "red snapper", "swordfish", "pollock", "herring",
+                           "perch", "grouper", "caviar", "monkfish", "rockfish", "lemon sole", "pike", "barramundi",
+                           "eel", "bluefish", "carp", "cuttlefish", "pompano", "arctic char", "john dory", "marlin", 
+                           "amberjack", "sturgeon",];
       } else {
         ingredientsList = ["blah"];
       }
